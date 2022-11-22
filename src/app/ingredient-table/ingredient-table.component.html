@@ -1,0 +1,66 @@
+<div class="card">
+  <p-table [value]="ingredient" [tableStyle]="{'min-width': '50rem'}" styleClass="p-datatable-gridlines">
+    <ng-template pTemplate="caption">
+      Ingredients
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr style="text-align: center;">
+        <th style="padding-bottom: 10px;">ID</th>
+        <th style="padding-bottom: 10px;">Name</th>
+        <th style="padding-bottom: 10px;">Energy</th>
+        <th style="padding-bottom: 10px;">Fats</th>
+        <th style="padding-bottom: 10px;">Carbs</th>
+        <th style="padding-bottom: 10px;">Fibers</th>
+        <th style="padding-bottom: 10px;">Proteins</th>
+        <th style="padding-bottom: 10px;">Sugar</th>
+
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-ingredient>
+      <tr style="text-align: center;">
+        <td style="padding-top: 10px;">{{ingredient.id}}</td>
+        <td style="padding-top: 10px;">{{ingredient.name}}</td>
+        <td style="padding-top: 10px;">{{ingredient.energy}}</td>
+        <td style="padding-top: 10px;">{{ingredient.fats}}</td>
+        <td style="padding-top: 10px;">{{ingredient.carbs}}</td>
+        <td style="padding-top: 10px;">{{ingredient.fibers}}</td>
+        <td style="padding-top: 10px;">{{ingredient.proteins}}</td>
+        <td style="padding-top: 10px;">{{ingredient.sugar}}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+<hr>
+<br>
+<!--<form (ngSubmit)="onSubmitForm(f)" #f="ngForm">-->
+<!--<div class="grid p-fluid">-->
+<!--  <div class="col-12 md:col-4">-->
+<!--    <div class="p-inputgroup">-->
+<!--      <label for="ID">ID </label>-->
+<!--      <input type="number" id="ID">-->
+<!--      <label for="name">Name</label>-->
+<!--      <input type="text" pInputText placeholder="Name" id="name">-->
+
+<!--      <label for="energy">Energy</label>-->
+<!--      <input type="number" pInputText placeholder="Energy" id="Energy">-->
+
+<!--      <label for="fats">Fats</label>-->
+<!--      <input type="number" pInputText placeholder="Fats" id="fats">-->
+
+<!--      <label for="carbs">Carbs</label>-->
+<!--      <input type="number" pInputText placeholder="Carbs" id="carbs">-->
+
+<!--      <label for="fibers">Fibers</label>-->
+<!--      <input type="number" pInputText placeholder="Fibers" id="fibers">-->
+
+<!--      <label for="proteins">Proteins</label>-->
+<!--      <input type="number" pInputText placeholder="Proteins" id="proteins">-->
+
+<!--      <label for="sugar">Sugar</label>-->
+<!--      <input type="number" pInputText placeholder="Sugar" id="sugar">-->
+<!--      <br>-->
+<!--      <button type="submit" pButton pRipple label="Add"></button>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  </div>-->
+<!--</form>-->
