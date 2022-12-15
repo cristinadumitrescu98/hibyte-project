@@ -1,14 +1,23 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { NgModule } from "@angular/core";
+import { RouterModule, Routes } from "@angular/router";
 
-import { AllergenTableComponent } from './allergen-table/allergen-table.component';
-import { AuthenticationComponent } from './authentication/authentication.component';
-import { IngredientTableComponent } from './ingredient-table/ingredient-table.component';
+import { AllergenTableComponent } from "./components/allergen-table/allergen-table.component";
+import { AuthGuard } from "./components/authentication/auth.guard";
+import { AuthenticationComponent } from "./components/authentication/authentication.component";
+import { IngredientTableComponent } from "./components/ingredient-table/ingredient-table.component";
 
 const routes: Routes = [
-  { path: 'allergens', component: AllergenTableComponent },
-  { path: 'ingredients', component: IngredientTableComponent },
-  { path: 'auth', component: AuthenticationComponent },
+  { path: "auth", component: AuthenticationComponent },
+  {
+    path: "allergens",
+    component: AllergenTableComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: "ingredients",
+    component: IngredientTableComponent,
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({

@@ -1,0 +1,86 @@
+<app-navbar></app-navbar>
+<div class="card">
+  <p-table [value]="ingredient" [tableStyle]="{'min-width': '50rem'}" styleClass="p-datatable-gridlines"
+    [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
+    currentPageReportTemplate="{first} - {last} of {totalRecords}" [rowsPerPageOptions]="[10,25,50]">
+    <ng-template pTemplate="caption">
+      Ingredients
+      <button pButton label="Add Ingredient" class="p-button-rounded" icon="pi pi-external-link"
+        (click)="showPopup()"></button>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr style="text-align: center;">
+        <th style="padding-bottom: 10px;">ID</th>
+        <th style="padding-bottom: 10px;">Name</th>
+        <th style="padding-bottom: 10px;">Energy</th>
+        <th style="padding-bottom: 10px;">Fats</th>
+        <th style="padding-bottom: 10px;">Carbohydrates</th>
+        <th style="padding-bottom: 10px;">Fibers</th>
+        <th style="padding-bottom: 10px;">Proteins</th>
+        <th style="padding-bottom: 10px;">Sugar</th>
+
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-ingredient>
+      <tr style="text-align: center;">
+        <td style="padding-top: 10px;">{{ingredient.id}}</td>
+        <td style="padding-top: 10px;">{{ingredient.name}}</td>
+        <td style="padding-top: 10px;">{{ingredient.energy}}</td>
+        <td style="padding-top: 10px;">{{ingredient.fats}}</td>
+        <td style="padding-top: 10px;">{{ingredient.carbohydrates}}</td>
+        <td style="padding-top: 10px;">{{ingredient.fiber}}</td>
+        <td style="padding-top: 10px;">{{ingredient.protein}}</td>
+        <td style="padding-top: 10px;">{{ingredient.sugar}}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+<!-- popup -->
+<p-dialog header="Add Ingredient" [modal]="true" [breakpoints]="{'960px': '75vw', '640px': '100vw'}"
+  [(visible)]="displayPopup" [style]="{width: '35vw', height: '30vw'}" [baseZIndex]="10000" [closable]="true">
+  <div class="col-12 md:col-4">
+    <div class="p-inputgroup" styleClass="first-element" style="margin-top: 10px;">
+      <input type="text" pInputText placeholder="Ingredient Name" [(ngModel)]="newIng.name" name="name">
+    </div>
+  </div>
+  <div class="col-12 md:col-4">
+    <div class="p-inputgroup" style="margin-top: 10px;">
+      <input type="text" pInputText placeholder="Energy" [(ngModel)]="newIng.energy" name="energy">
+    </div>
+  </div>
+
+  <div class="col-12 md:col-4">
+    <div class="p-inputgroup" style="margin-top: 10px;">
+      <input type="text" pInputText placeholder="Fats" [(ngModel)]="newIng.fats" name="fats">
+    </div>
+  </div>
+
+  <div class="col-12 md:col-4">
+    <div class="p-inputgroup" style="margin-top: 10px;">
+      <input type="text" pInputText placeholder="Carbohydrates" [(ngModel)]="newIng.carbohydrates" name="carbohydrates">
+    </div>
+  </div>
+
+  <div class="col-12 md:col-4">
+    <div class="p-inputgroup" style="margin-top: 10px;">
+      <input type="text" pInputText placeholder="Fiber" [(ngModel)]="newIng.fiber" name="fiber">
+    </div>
+  </div>
+
+  <div class="col-12 md:col-4">
+    <div class="p-inputgroup" style="margin-top: 10px;">
+      <input type="text" pInputText placeholder="Protein" [(ngModel)]="newIng.protein" name="protein">
+    </div>
+  </div>
+  <div class="col-12 md:col-4" style="margin-top: 10px;">
+    <div class="p-inputgroup">
+      <input type="text" pInputText placeholder="Sugar" [(ngModel)]="newIng.sugar" name="sugar">
+    </div>
+  </div>
+  <ng-template pTemplate="footer">
+    <div style="text-align: center; margin-top: 1.5rem;">
+      <button pButton label="Add Ingredient" class="p-button-rounded" icon="pi pi-plus"
+        (click)="onSubmitNewIngredient()"></button>
+    </div>
+  </ng-template>
+</p-dialog>

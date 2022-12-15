@@ -1,5 +1,5 @@
 export class Allergen {
-  public id: number;
+  public id?: number;
   public name: string;
 
   constructor(id: number, name: string) {
