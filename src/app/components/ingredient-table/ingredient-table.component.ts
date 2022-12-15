@@ -21,7 +21,6 @@ export class IngredientTableComponent implements OnInit {
 
   getIngredients() {
     this.ingredientService.fetchIngredients().subscribe((ingredients) => {
-      console.log(ingredients);
       this.ingredient = ingredients;
     });
   }

@@ -22,10 +22,8 @@ export class AuthenticationComponent {
     }
     const username = this.loginForm.value.username;
     const password = this.loginForm.value.password;
-    console.log(this.loginForm.getRawValue);
 
     this.authService.login(username, password);
-    console.log(username, password);
     this.loginForm.reset();
   }
 }

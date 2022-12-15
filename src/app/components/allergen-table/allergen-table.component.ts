@@ -11,8 +11,6 @@ import { AllergenService } from "../../services/allergen.service";
 })
 export class AllergenTableComponent implements OnInit {
   allergen: Allergen[] = [];
-  first = 0;
-  rows = 10;
 
   addAllergenForm: FormGroup = new FormGroup({
     id: new FormControl({ value: "", disabled: true }, Validators.required),
@@ -33,7 +31,6 @@ export class AllergenTableComponent implements OnInit {
 
   getAllergens() {
     this.allergenService.fetchAllergens().subscribe((allergens) => {
-      console.log(allergens);
       this.allergen = allergens;
     });
   }

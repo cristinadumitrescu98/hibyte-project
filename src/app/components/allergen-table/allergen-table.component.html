@@ -9,30 +9,28 @@
         (click)="showPopup()"></button>
     </ng-template>
     <ng-template pTemplate="header">
-      <tr style="text-align: center;">
-        <th style="padding-bottom: 10px;">ID</th>
-        <th style="padding-bottom: 10px;">Name</th>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-allergen>
-      <tr style="text-align: center;">
-        <td style="padding-top: 10px;">{{allergen.id}}</td>
-        <td style="padding-top: 10px;">{{allergen.name}}</td>
+      <tr>
+        <td>{{allergen.id}}</td>
+        <td>{{allergen.name}}</td>
       </tr>
     </ng-template>
   </p-table>
 
-  <!-- popup-->
   <p-dialog header="Add Allergen" [(visible)]="displayPopup" [modal]="true"
-    [breakpoints]="{'960px': '75vw', '640px': '100vw'}" [style]="{width: '22vw', height: '25vw'}" [baseZIndex]="10000"
+    [breakpoints]="{'960px': '75vw', '640px': '100vw'}" [style]="{width: '22vw', height: '15vw'}" [baseZIndex]="10000"
     [closable]="true" closeIcon="pi pi-times">
     <form [formGroup]="addAllergenForm" novalidate #allergenform="ngForm">
       <div class="card">
         <div class="grid p-fluid">
           <div class="col-12 md:col-4">
-            <div class="p-inputgroup" style="margin-left: 5px;">
-              <input type="text" pInputText placeholder="Allergen Name" formControlName="name"
-                style="margin-top: 10px;">
+            <div class="p-inputgroup" style="margin-top: 1vw;">
+              <input type="text" pInputText placeholder="Allergen Name" formControlName="name">
             </div>
           </div>
         </div>

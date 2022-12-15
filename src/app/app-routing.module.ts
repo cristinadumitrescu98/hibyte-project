@@ -1,9 +1,9 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
-import { AllergenTableComponent } from "./components/allergen-table/allergen-table.component";
 import { AuthGuard } from "./components/authentication/auth.guard";
 import { AuthenticationComponent } from "./components/authentication/authentication.component";
+import { AllergenTableComponent } from "./components/allergen-table/allergen-table.component";
 import { IngredientTableComponent } from "./components/ingredient-table/ingredient-table.component";
 
 const routes: Routes = [

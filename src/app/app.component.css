@@ -1,4 +1,3 @@
-/* Table Header */
 ::ng-deep.p-datatable .p-datatable-thead > tr > th {
   background-color: white;
   color: #373a3c;
@@ -16,7 +15,6 @@
   align-items: center;
 }
 
-/* Table Vertical Gridline*/
 ::ng-deep.p-datatable.p-datatable-gridlines:has(.p-datatable-thead):has(
     .p-datatable-tbody
   )
@@ -26,13 +24,20 @@
   border-right: 1px #dbdbdb;
 }
 
-/* Table Body */
+::ng-deep.p-datatable.p-datatable-gridlines:has(.p-datatable-thead):has(
+    .p-datatable-tbody
+  )
+  .p-datatable-tbody
+  > tr
+  > td:last-child {
+  border-right: 1px solid #69707a;
+}
+
 ::ng-deep.p-datatable .p-datatable-tbody > tr > td {
   background-color: white;
   color: #373a3c;
 }
 
-/* Paginator: Dropdown*/
 ::ng-deep.p-paginator-rpp-options {
   background-color: #1faea8;
   color: #373a3c;
@@ -57,14 +62,12 @@
   color: white;
 }
 
-/* Paginator */
 ::ng-deep.p-datatable.p-datatable-gridlines .p-paginator-bottom {
   background-color: white;
   border-width: 0 1px 1px 1px;
   border-color: #69707a;
 }
 
-/* Paginator + Paginator Arrows */
 ::ng-deep.p-paginator .p-paginator-first,
 .p-paginator .p-paginator-prev,
 .p-paginator .p-paginator-next,
