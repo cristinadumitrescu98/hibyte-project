@@ -1,0 +1,37 @@
+:host::ng-deep.p-4 {
+  display: grid;
+  text-align: center;
+  justify-items: center;
+  padding: 100px 10px 25px 10px;
+  row-gap: 5px;
+  width: 100%;
+}
+
+:host::ng-deep * {
+  padding-right: 10px;
+}
+
+:host::ng-deep.p-inputtext {
+  background-color: white;
+  color: var(--onyx-dark-grey);
+  width: 250px;
+  border: 1px solid var(--light-sea-teal);
+}
+
+:host::ng-deep.p-inputtext :hover,
+:host::ng-deep.p-inputtext:focus {
+  border: 2px solid var(--light-sea-teal);
+}
+
+:host::ng-deep.form {
+  padding-top: 10rem;
+}
+
+:host::ng-deep.p-button:disabled,
+:host::ng-deep.p-button {
+  background-color: var(--mango-orange);
+}
+
+:host::ng-deep.p-button:hover {
+  background-color: var(--light-sea-teal);
+}

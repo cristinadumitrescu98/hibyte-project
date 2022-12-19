@@ -1,0 +1,10 @@
+<div class="nav">
+  <div class="p-toolbar-group-right">
+    <p-button label="Allergens" routerLink="/allergens" routerLinkActive="active" (click)="navigateTo('allergens')"
+      styleClass="navbar-allergen-btn">
+    </p-button>
+    <p-button label="Ingredients" styleClass="p-button-success" routerLink="/allergens" routerLinkActive="active"
+      (click)="navigateTo('ingredients')"></p-button>
+    <router-outlet></router-outlet>
+  </div>
+</div>

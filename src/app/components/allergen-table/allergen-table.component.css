@@ -1,0 +1,70 @@
+:host::ng-deep.p-button:hover {
+  background-color: var(--mango-orange);
+  border-radius: 3px;
+}
+
+:host::ng-deep.p-button {
+  background-color: var(--light-sea-teal);
+  color: white;
+  border-color: var(--light-sea-teal);
+  width: 180px;
+  border-radius: 3px;
+}
+
+:host::ng-deep.p-button.p-button-success:hover,
+:host::ng-deep.p-button.p-button-rounded:hover {
+  background-color: var(--light-sea-teal);
+  border-color: var(--light-sea-teal);
+  color: white;
+  border-radius: 3px;
+}
+
+:host::ng-deep.p-button.p-button-success,
+:host::ng-deep.p-button.p-button-rounded {
+  background-color: var(--mango-orange);
+  border-color: var(--mango-orange);
+  border-radius: 3px;
+}
+
+:host::ng-deep.p-paginator .p-paginator-pages .p-paginator-page:hover {
+  color: var(--onyx-dark-grey);
+}
+
+:host::ng-deep.p-paginator .p-dropdown {
+  border-color: var(--light-sea-teal);
+}
+
+:host::ng-deep.p-dialog-draggable .p-dialog-header,
+:host::ng-deep.p-dialog .p-dialog-content,
+:host::ng-deep.p-dialog .p-dialog-footer {
+  background-color: white;
+  color: var(--onyx-dark-grey);
+}
+
+:host::ng-deep.p-inputgroup .p-inputtext,
+.p-fluid .p-inputgroup .p-inputtext {
+  background-color: white;
+  color: var(--onyx-dark-grey);
+  border: 1px solid var(--nickel-light-grey);
+}
+
+:host::ng-deep.p-inputtext::placeholder {
+  color: var(--onyx-dark-grey);
+  opacity: 0.4;
+}
+
+:host::ng-deep.p-inputtext:enabled:hover,
+:host::ng-deep.p-inputtext:focus {
+  border: 1px solid var(--nickel-light-grey);
+  box-shadow: none;
+}
+
+:host::ng-deep.custom-popup {
+  width: 22vw;
+  height: 15vw;
+  z-index: 10000;
+}
+
+:host::ng-deep.p-dialog .p-dialog-footer {
+  text-align: center;
+}

@@ -1,3 +1,131 @@
-.auth {
-  float: right;
+::ng-deep.p-datatable .p-datatable-thead > tr > th {
+  background-color: white;
+  color: var(--onyx-dark-grey);
+  border-width: 0 1px 1px 1px;
+  border-color: var(--nickel-light-grey);
+}
+
+::ng-deep.p-datatable .p-datatable-header {
+  background-color: white;
+  color: var(--onyx-dark-grey);
+  border-width: 0 1px 1px 1px;
+  border-color: var(--nickel-light-grey);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+::ng-deep.p-datatable.p-datatable-gridlines:has(.p-datatable-thead):has(
+    .p-datatable-tbody
+  )
+  .p-datatable-tbody
+  > tr
+  > td {
+  border-right: 1px var(--very-light-grey);
+}
+
+::ng-deep.p-datatable.p-datatable-gridlines:has(.p-datatable-thead):has(
+    .p-datatable-tbody
+  )
+  .p-datatable-tbody
+  > tr
+  > td:last-child {
+  border-right: 1px solid var(--nickel-light-grey);
+}
+
+::ng-deep.p-datatable .p-datatable-tbody > tr > td {
+  background-color: white;
+  color: var(--onyx-dark-grey);
+}
+
+::ng-deep.p-paginator-rpp-options {
+  background-color: var(--light-sea-teal);
+  color: var(--onyx-dark-grey);
+}
+::ng-deep.p-dropdown-panel {
+  background-color: var(--light-sea-teal);
+  border-color: var(--light-sea-teal);
+  box-shadow: none;
+}
+
+::ng-deep.p-checkbox .p-checkbox-box {
+  background-color: var(--light-sea-teal);
+  border-color: var(--light-sea-teal);
+}
+
+::ng-deep.p-checkbox .p-checkbox-box.p-highlight {
+  background-color: var(--mango-orange);
+  border-color: var(--mango-orange);
+}
+
+::ng-deep.p-dropdown .p-dropdown-label {
+  color: white;
+}
+
+::ng-deep.p-datatable.p-datatable-gridlines .p-paginator-bottom {
+  background-color: white;
+  border-width: 0 1px 1px 1px;
+  border-color: var(--nickel-light-grey);
+}
+
+::ng-deep.p-paginator .p-paginator-first,
+.p-paginator .p-paginator-prev,
+.p-paginator .p-paginator-next,
+.p-paginator .p-paginator-last:hover {
+  color: var(--nickel-light-grey);
+}
+
+:host::ng-deep.p-paginator .p-paginator-pages .p-paginator-page:focus,
+:host::ng-deep.p-paginator .p-dropdown .p-dropdown-label :hover {
+  border: 1px solid var(--light-sea-teal);
+  box-shadow: none;
+}
+
+:host::ng-deep.p-paginator .p-dropdown .p-dropdown-label:active:focus,
+:host::ng-deep.p-dropdown:not(.p-disabled).p-focus {
+  border-color: var(--light-sea-teal);
+  box-shadow: none;
+}
+
+:host::ng-deep.p-paginator
+  .p-paginator-prev:not(.p-disabled):not(.p-highlight):hover {
+  color: var(--onyx-dark-grey);
+}
+
+::ng-deep.pi-angle-double-right:before,
+::ng-deep.pi-angle-left:before {
+  color: var(--nickel-light-grey);
+}
+
+::ng-deep.p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+  background-color: var(--light-sea-teal);
+  border-color: var(--light-sea-teal);
+}
+
+::ng-deep.p-paginator .p-paginator-pages .p-paginator-page {
+  color: var(--onyx-dark-grey);
+}
+
+::ng-deep.p-paginator .p-paginator-current {
+  background-color: var(--light-sea-teal);
+  border-color: var(--light-sea-teal);
+  color: white;
+}
+
+::ng-deep.pi-times:before {
+  color: var(--onyx-dark-grey);
+}
+
+::ng-deep.p-paginator
+  .p-paginator-next:not(.p-disabled):not(.p-highlight):hover,
+::ng-deep.p-paginator
+  .p-paginator-last:not(.p-disabled):not(.p-highlight):hover,
+::ng-deep.p-paginator
+  .p-paginator-first:not(.p-disabled):not(.p-highlight):hover,
+::ng-deep.p-paginator
+  .p-paginator-prev:not(.p-disabled):not(.p-highlight):hover,
+::ng-deep.p-paginator .p-paginator-prev,
+::ng-deep.p-paginator .p-paginator-next {
+  box-shadow: none;
+  color: var(--nickel-light-grey);
 }

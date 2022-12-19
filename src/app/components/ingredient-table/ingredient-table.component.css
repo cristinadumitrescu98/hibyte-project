@@ -1,0 +1,90 @@
+:host::ng-deep.p-button:hover {
+  background-color: var(--mango-orange);
+  border: 1px solid var(--mango-orange);
+  border-radius: 3px;
+}
+
+:host::ng-deep.p-button {
+  background-color: var(--light-sea-teal);
+  border-color: var(--light-sea-teal);
+  color: white;
+  width: 180px;
+  border-radius: 3px;
+}
+
+:host::ng-deep.p-button.p-button-success:hover {
+  background-color: var(--light-sea-teal);
+  border-color: var(--light-sea-teal);
+  color: white;
+  border-radius: 3px;
+}
+
+:host::ng-deep.p-button.p-button-success,
+:host::ng-deep.p-button.p-button-rounded {
+  background-color: var(--mango-orange);
+  border-color: var(--mango-orange);
+  border-radius: 3px;
+}
+
+:host::ng-deep.p-button.p-button-rounded:hover {
+  background-color: var(--light-sea-teal);
+  border: 1px solid var(--light-sea-teal);
+  color: white;
+  border-radius: 3px;
+}
+
+:host::ng-deep.p-paginator .p-paginator-pages .p-paginator-page:hover {
+  color: var(--onyx-dark-grey);
+}
+
+:host::ng-deep.p-paginator .p-dropdown {
+  border-color: var(--light-sea-teal);
+}
+
+:host::ng-deep.p-dialog-draggable .p-dialog-header {
+  background-color: white;
+  color: var(--onyx-dark-grey);
+}
+
+:host::ng-deep.p-dialog .p-dialog-content {
+  background-color: white;
+  color: var(--onyx-dark-grey);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-content: center;
+  justify-items: stretch;
+  column-gap: 1vw;
+  row-gap: 1vw;
+}
+
+:host::ng-deep.p-dialog .p-dialog-content {
+  width: 100%;
+}
+
+:host::ng-deep.p-inputgroup .p-inputtext,
+.p-fluid .p-inputgroup .p-inputtext,
+:host::ng-deep.p-dialog .p-dialog-footer {
+  background-color: white;
+  color: var(--onyx-dark-grey);
+}
+
+:host::ng-deep.p-inputgroup .p-inputtext {
+  color: var(--onyx-dark-grey);
+}
+
+:host::ng-deep.p-inputtext::placeholder {
+  color: var(--onyx-dark-grey);
+  opacity: 0.4;
+}
+
+:host::ng-deep.p-inputtext:focus:enabled,
+:host::ng-deep.p-inputtext:enabled:hover {
+  border: 1px solid var(--nickel-light-grey);
+  box-shadow: none;
+}
+
+:host::ng-deep.custom-popup {
+  width: 35;
+  height: 25vw;
+  z-index: 10000;
+}
