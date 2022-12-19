@@ -15,8 +15,8 @@ export class IngredientService {
     );
   }
 
-  addNewIngredients(ingredient: Ingredient): Observable<Ingredient[]> {
-    return this.http.post<Ingredient[]>(
+  addNewIngredient(ingredient: Ingredient): Observable<Ingredient> {
+    return this.http.post<Ingredient>(
       `${environment.baseURL}/api/scope/${environment.scopeKey}/items/ingredient`,
       ingredient
     );

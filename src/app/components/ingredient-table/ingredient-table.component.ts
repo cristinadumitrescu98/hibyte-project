@@ -9,8 +9,8 @@ import { IngredientService } from "../../services/ingredient.service";
   styleUrls: ["./ingredient-table.component.css"],
 })
 export class IngredientTableComponent implements OnInit {
-  ingredient: Ingredient[] = [];
-  newIng: Ingredient = new Ingredient();
+  ingredients: Ingredient[] = [];
+  newIngredient: Ingredient = new Ingredient();
   displayPopup: boolean;
 
   constructor(private ingredientService: IngredientService) {}
@@ -21,7 +21,7 @@ export class IngredientTableComponent implements OnInit {
 
   getIngredients() {
     this.ingredientService.fetchIngredients().subscribe((ingredients) => {
-      this.ingredient = ingredients;
+      this.ingredients = ingredients;
     });
   }
 
@@ -30,10 +30,11 @@ export class IngredientTableComponent implements OnInit {
   }
 
   onSubmitNewIngredient() {
-    this.ingredientService.addNewIngredients(this.newIng).subscribe((res) => {
-      this.displayPopup = false;
-      this.getIngredients();
-      res.values;
-    });
+    this.ingredientService
+      .addNewIngredient(this.newIngredient)
+      .subscribe(() => {
+        this.displayPopup = false;
+        this.getIngredients();
+      });
   }
 }

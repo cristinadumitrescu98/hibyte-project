@@ -1,18 +1,10 @@
-<style>
-  .navbar {
-    width: 100%;
-    height: 5rem;
-
-  }
-</style>
-
 <div class="nav">
-  <div class="p-toolbar-group-right" [ngStyle]="{'margin-bottom':'1.5rem', 'margin-top':'2rem', 'text-align':'right'}">
-    <p-button label="Allergens" routerLink="/allergens" routerLinkActive="active" (click)="onClick('allergens')"
-      [ngStyle]="{'margin-right':'10px'}">
+  <div class="p-toolbar-group-right">
+    <p-button label="Allergens" routerLink="/allergens" routerLinkActive="active" (click)="navigateTo('allergens')"
+      styleClass="navbar-allergen-btn">
     </p-button>
     <p-button label="Ingredients" styleClass="p-button-success" routerLink="/allergens" routerLinkActive="active"
-      (click)="onClick('ingredients')"></p-button>
+      (click)="navigateTo('ingredients')"></p-button>
     <router-outlet></router-outlet>
   </div>
 </div>

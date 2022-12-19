@@ -15,8 +15,8 @@ export class AllergenService {
     );
   }
 
-  addNewAllergens(allergen: Allergen): Observable<Allergen[]> {
-    return this.http.post<Allergen[]>(
+  addNewAllergen(allergen: Allergen): Observable<Allergen> {
+    return this.http.post<Allergen>(
       `${environment.baseURL}/api/scope/${environment.scopeKey}/items/allergens`,
       allergen
     );

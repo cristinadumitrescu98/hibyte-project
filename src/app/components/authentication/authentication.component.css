@@ -7,37 +7,31 @@
   width: 100%;
 }
 
-:host::ng-deep.password {
-  padding-bottom: 50px;
+:host::ng-deep * {
+  padding-right: 10px;
 }
 
 :host::ng-deep.p-inputtext {
   background-color: white;
-  color: #373a3d;
+  color: var(--onyx-dark-grey);
   width: 250px;
-  border: 1px solid #1faea8;
+  border: 1px solid var(--light-sea-teal);
 }
 
-:host::ng-deep.p-inputtext :hover {
-  border: 2px solid #1faea8;
-}
-
+:host::ng-deep.p-inputtext :hover,
 :host::ng-deep.p-inputtext:focus {
-  border: 2px solid #1faea8;
+  border: 2px solid var(--light-sea-teal);
 }
 
 :host::ng-deep.form {
   padding-top: 10rem;
 }
 
-:host::ng-deep.p-button:disabled {
-  background-color: #ff8947;
-}
-
+:host::ng-deep.p-button:disabled,
 :host::ng-deep.p-button {
-  background-color: #ff8947;
+  background-color: var(--mango-orange);
 }
 
 :host::ng-deep.p-button:hover {
-  background-color: #1faea8;
+  background-color: var(--light-sea-teal);
 }

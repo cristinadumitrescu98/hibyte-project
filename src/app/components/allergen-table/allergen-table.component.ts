@@ -10,10 +10,9 @@ import { AllergenService } from "../../services/allergen.service";
   styleUrls: ["./allergen-table.component.css"],
 })
 export class AllergenTableComponent implements OnInit {
-  allergen: Allergen[] = [];
+  allergens: Allergen[] = [];
 
   addAllergenForm: FormGroup = new FormGroup({
-    id: new FormControl({ value: "", disabled: true }, Validators.required),
     name: new FormControl("", Validators.required),
   });
 
@@ -31,14 +30,13 @@ export class AllergenTableComponent implements OnInit {
 
   getAllergens() {
     this.allergenService.fetchAllergens().subscribe((allergens) => {
-      this.allergen = allergens;
+      this.allergens = allergens;
     });
   }
 
   addAllergen() {
     let newAllergen: Allergen = { name: this.addAllergenForm.value.name };
-    this.allergenService.addNewAllergens(newAllergen).subscribe((res) => {
-      newAllergen = res.values;
+    this.allergenService.addNewAllergen(newAllergen).subscribe(() => {
       this.displayPopup = false;
       this.getAllergens();
     });
