@@ -22,10 +22,10 @@ export class AllergenService {
     );
   }
 
-  // deleteSelectedAllergen(name: string) {
-  //   return this.http.delete<Allergen>(
-  //     `${environment.baseURL}/api/scope/${environment.scopeKey}/items/allergens`,
-  //     name
-  //   );
-  // }
+  updateAllergen(allergen: Allergen): Observable<Allergen> {
+    return this.http.put<Allergen>(
+      `${environment.baseURL}/api/scope/${environment.scopeKey}/item/${allergen.id}`,
+      allergen
+    );
+  }
 }

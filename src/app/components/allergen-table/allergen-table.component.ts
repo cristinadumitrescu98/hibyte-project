@@ -20,6 +20,7 @@ export class AllergenTableComponent implements OnInit {
   displayPopup: boolean;
   displayEditPopup: boolean;
   currentEditName: string;
+  currentEditId?: number;
 
   constructor(
     private allergenService: AllergenService,
@@ -34,11 +35,31 @@ export class AllergenTableComponent implements OnInit {
     this.displayPopup = true;
   }
 
-  showEditPopup(name: string) {
+  showEditPopup(allergen: Allergen) {
     this.displayEditPopup = true;
-    this.currentEditName = name;
+    this.currentEditName = allergen.name;
+    this.currentEditId = allergen.id;
     console.log("workssss");
   }
+
+  onSaveButtonClick() {
+    this.allergens.forEach((allergenElement) => {
+      if (allergenElement.id === this.currentEditId) {
+        allergenElement.name = this.currentEditName;
+        this.allergenService
+          .updateAllergen(allergenElement)
+          .subscribe((res) => {
+            if (res) {
+              allergenElement = res;
+            }
+          });
+      }
+    });
+    this.displayEditPopup = false;
+  }
+
+  // editAllergen(allergen: Allergen) {
+  // }
 
   getAllergens() {
     this.allergenService.fetchAllergens().subscribe((allergens) => {
