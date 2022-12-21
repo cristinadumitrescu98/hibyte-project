@@ -22,6 +22,7 @@ import { AuthInterceptorService } from "./services/auth-interceptor.service";
 import { AuthService } from "./services/auth.service";
 import { AllergenService } from "./services/allergen.service";
 import { IngredientService } from "./services/ingredient.service";
+import { DeleteConfirmationPopupComponent } from './components/delete-confirmation-popup/delete-confirmation-popup.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { IngredientService } from "./services/ingredient.service";
     NavbarComponent,
     HeaderComponent,
     AppComponent,
+    DeleteConfirmationPopupComponent,
   ],
   imports: [
     BrowserModule,

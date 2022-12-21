@@ -5,19 +5,24 @@
     currentPageReportTemplate="{first} - {last} of {totalRecords}" [rowsPerPageOptions]="[5,10,20]">
     <ng-template pTemplate="caption">
       Allergens
-      <button pButton label="Add Allergen" class="p-button-rounded" icon="pi pi-external-link"
-        (click)="showPopup()"></button>
+      <button pButton label="Add Allergen" class="p-button-rounded" icon="pi pi-plus" (click)="showPopup()"></button>
     </ng-template>
     <ng-template pTemplate="header">
       <tr>
         <th>ID</th>
         <th>Name</th>
+        <th>Actions</th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-allergen>
       <tr>
         <td>{{allergen.id}}</td>
         <td>{{allergen.name}}</td>
+        <td>
+          <p-button icon="pi pi-pencil" styleClass="edit-btn" (click)="showEditPopup(allergen.name)">
+          </p-button>
+          <app-delete-confirmation-popup></app-delete-confirmation-popup>
+        </td>
       </tr>
     </ng-template>
   </p-table>
@@ -38,9 +43,22 @@
     </form>
     <ng-template pTemplate="footer">
       <div>
-        <button pButton label="Add Allergen" class="p-button-rounded" icon=" pi pi-plus"
-          (click)="addAllergen()"></button>
+        <button pButton label="Cancel" (click)="displayPopup=false" class="p-button-rounded"></button>
+        <button pButton label="Save" class="p-button-label" (click)="addAllergen()"></button>
       </div>
     </ng-template>
   </p-dialog>
 </div>
+
+<p-dialog header="Edit Allergen" [(visible)]="displayEditPopup" [breakpoints]="{'960px': '75vw', '640px': '100vw'}"
+  [closable]="true" styleClass="custom-popup">
+  <div class="p-inputgroup">
+    <input type=" text" pInputText value={{currentEditName}}>
+  </div>
+  <ng-template pTemplate="footer">
+    <div>
+      <button pButton label="Cancel" (click)="displayEditPopup=false" class="p-button-rounded"></button>
+      <button pButton label="Save" class="p-button-rounded"></button>
+    </div>
+  </ng-template>
+</p-dialog>

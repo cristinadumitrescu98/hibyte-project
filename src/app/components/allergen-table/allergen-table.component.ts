@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
 
 import { Allergen } from "src/app/data-model/allergen.model";
 import { AllergenService } from "../../services/allergen.service";
+import { DeleteConfirmationPopupComponent } from "../delete-confirmation-popup/delete-confirmation-popup.component";
 
 @Component({
   selector: "app-allergen-table",
@@ -17,8 +18,13 @@ export class AllergenTableComponent implements OnInit {
   });
 
   displayPopup: boolean;
+  displayEditPopup: boolean;
+  currentEditName: string;
 
-  constructor(private allergenService: AllergenService) {}
+  constructor(
+    private allergenService: AllergenService,
+    private deleteConfirmationPopup: DeleteConfirmationPopupComponent
+  ) {}
 
   ngOnInit() {
     this.getAllergens();
@@ -26,6 +32,12 @@ export class AllergenTableComponent implements OnInit {
 
   showPopup() {
     this.displayPopup = true;
+  }
+
+  showEditPopup(name: string) {
+    this.displayEditPopup = true;
+    this.currentEditName = name;
+    console.log("workssss");
   }
 
   getAllergens() {
@@ -42,5 +54,10 @@ export class AllergenTableComponent implements OnInit {
     });
 
     this.addAllergenForm.reset();
+  }
+
+  triggerDeletePopup() {
+    this.deleteConfirmationPopup.displayModalPopup = true;
+    console.log("works");
   }
 }

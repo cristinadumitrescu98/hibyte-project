@@ -11,7 +11,17 @@ import { IngredientService } from "../../services/ingredient.service";
 export class IngredientTableComponent implements OnInit {
   ingredients: Ingredient[] = [];
   newIngredient: Ingredient = new Ingredient();
+
   displayPopup: boolean;
+  displayEditPopup: boolean;
+
+  currentEditName: string;
+  currentEditEnergy: number;
+  currentEditFats: number;
+  currentEditCarbohydrates: number;
+  currentEditFibers: number;
+  currentEditProteins: number;
+  currentEditSugar: number;
 
   constructor(private ingredientService: IngredientService) {}
 
@@ -27,6 +37,25 @@ export class IngredientTableComponent implements OnInit {
 
   showPopup() {
     this.displayPopup = true;
+  }
+
+  showEditPopup(
+    name: string,
+    energy: number,
+    fats: number,
+    carbohydrates: number,
+    fibers: number,
+    proteins: number,
+    sugar: number
+  ) {
+    this.displayEditPopup = true;
+    this.currentEditName = name;
+    this.currentEditEnergy = energy;
+    this.currentEditFats = fats;
+    this.currentEditCarbohydrates = carbohydrates;
+    this.currentEditFibers = fibers;
+    this.currentEditProteins = proteins;
+    this.currentEditSugar = sugar;
   }
 
   onSubmitNewIngredient() {

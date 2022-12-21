@@ -1,0 +1,15 @@
+:host::ng-deep.p-dialog .p-dialog-content {
+  text-align: center;
+}
+
+:host::ng-deep.p-dialog .p-dialog-footer button:focus,
+:host::ng-deep.p-dialog .p-dialog-footer button:enabled {
+  box-shadow: none;
+  border-color: var(--light-sea-teal);
+}
+
+:host::ng-deep.p-dialog .p-dialog-footer button:hover {
+  border-color: var(--mango-orange);
+}
+
+

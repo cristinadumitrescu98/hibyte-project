@@ -66,6 +66,7 @@
 :host::ng-deep.p-dialog .p-dialog-footer {
   background-color: white;
   color: var(--onyx-dark-grey);
+  text-align: center;
 }
 
 :host::ng-deep.p-inputgroup .p-inputtext {
@@ -84,7 +85,24 @@
 }
 
 :host::ng-deep.custom-popup {
-  width: 35;
+  width: 35vw;
   height: 25vw;
   z-index: 10000;
+}
+
+:host::ng-deep.edit-btn,
+:host::ng-deep.delete-btn {
+  width: 3rem;
+  border-radius: 3px;
+  margin-right: 5px;
+  background-color: transparent;
+  color: var(--onyx-dark-grey);
+}
+
+:host::ng-deep.edit-btn:hover,
+:host::ng-deep.delete-btn:hover {
+  border: 1px solid var(--mango-orange);
+  box-shadow: none;
+  background-color: transparent;
+  color: var(--onyx-dark-grey);
 }

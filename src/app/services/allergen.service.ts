@@ -21,4 +21,11 @@ export class AllergenService {
       allergen
     );
   }
+
+  // deleteSelectedAllergen(name: string) {
+  //   return this.http.delete<Allergen>(
+  //     `${environment.baseURL}/api/scope/${environment.scopeKey}/items/allergens`,
+  //     name
+  //   );
+  // }
 }

@@ -68,3 +68,25 @@
 :host::ng-deep.p-dialog .p-dialog-footer {
   text-align: center;
 }
+
+:host::ng-deep.edit-btn,
+:host::ng-deep.delete-btn {
+  width: 3rem;
+  border-radius: 3px;
+  margin-right: 5px;
+  background-color: transparent;
+  color: var(--onyx-dark-grey);
+}
+
+:host::ng-deep.p-button-label:hover,
+:host::ng-deep.p-button-label:enabled:focus {
+  border-color: var(--mango-orange);
+}
+
+:host::ng-deep.edit-btn:hover,
+:host::ng-deep.delete-btn:hover {
+  border: 1px solid var(--mango-orange);
+  box-shadow: none;
+  background-color: transparent;
+  color: var(--onyx-dark-grey);
+}
