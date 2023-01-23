@@ -1,16 +1,16 @@
-import { Component, Injectable } from "@angular/core";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 
 @Component({
   selector: "app-delete-confirmation-popup",
   templateUrl: "./delete-confirmation-popup.component.html",
   styleUrls: ["./delete-confirmation-popup.component.css"],
 })
-@Injectable({ providedIn: "root" })
 export class DeleteConfirmationPopupComponent {
-  displayModalPopup: boolean;
+  @Input() deleteModalPopup: boolean = false;
 
-  showModalDialog() {
-    this.displayModalPopup = true;
-    console.log("popup works");
+  @Output() deletePopupClosed: EventEmitter<boolean> =
+    new EventEmitter<boolean>();
+  closePopup(withDeletion: boolean) {
+    this.deletePopupClosed.emit(withDeletion);
   }
 }

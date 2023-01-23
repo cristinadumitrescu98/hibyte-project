@@ -1,5 +1,6 @@
 :host::ng-deep.p-dialog .p-dialog-content {
   text-align: center;
+  display: block;
 }
 
 :host::ng-deep.p-dialog .p-dialog-footer button:focus,
@@ -12,4 +13,14 @@
   border-color: var(--mango-orange);
 }
 
+:host::ng-deep.p-dialog {
+  width: 40vw;
+}
 
+@media (min-width: 320px) and (max-width: 480px) {
+  :host::ng-deep.p-dialog {
+    height: 27vh;
+    width: 79vw;
+    text-align: center;
+  }
+}

@@ -1,9 +1,14 @@
-import { Component, OnInit } from "@angular/core";
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 
 import { Allergen } from "src/app/data-model/allergen.model";
 import { AllergenService } from "../../services/allergen.service";
-import { DeleteConfirmationPopupComponent } from "../delete-confirmation-popup/delete-confirmation-popup.component";
 
 @Component({
   selector: "app-allergen-table",
@@ -11,21 +16,28 @@ import { DeleteConfirmationPopupComponent } from "../delete-confirmation-popup/d
   styleUrls: ["./allergen-table.component.css"],
 })
 export class AllergenTableComponent implements OnInit {
+  @Input()
+  editMode: boolean = false;
+
   allergens: Allergen[] = [];
 
   addAllergenForm: FormGroup = new FormGroup({
     name: new FormControl("", Validators.required),
   });
 
+  sentAllergen: Allergen = new Allergen();
+  selectedAllergen: Allergen;
+
   displayPopup: boolean;
   displayEditPopup: boolean;
-  currentEditName: string;
-  currentEditId?: number;
+  displayDeletePopup: boolean;
 
-  constructor(
-    private allergenService: AllergenService,
-    private deleteConfirmationPopup: DeleteConfirmationPopupComponent
-  ) {}
+  currentEditId?: number;
+  currentEditName: string;
+
+  currentDeleteId: number;
+
+  constructor(private allergenService: AllergenService) {}
 
   ngOnInit() {
     this.getAllergens();
@@ -35,17 +47,32 @@ export class AllergenTableComponent implements OnInit {
     this.displayPopup = true;
   }
 
+  getAllergens() {
+    this.allergenService.fetchAllergens().subscribe((allergens) => {
+      this.allergens = allergens;
+    });
+  }
+
+  addAllergen(event: any) {
+    let newAllergen = { name: this.addAllergenForm.value.name };
+    this.allergenService.addNewAllergen(newAllergen).subscribe(() => {
+      this.displayPopup = false;
+      this.getAllergens();
+    });
+
+    this.addAllergenForm.reset();
+  }
+
   showEditPopup(allergen: Allergen) {
     this.displayEditPopup = true;
     this.currentEditName = allergen.name;
     this.currentEditId = allergen.id;
-    console.log("workssss");
   }
 
-  onSaveButtonClick() {
+  onEditSaveButtonClick(allergen: any) {
     this.allergens.forEach((allergenElement) => {
-      if (allergenElement.id === this.currentEditId) {
-        allergenElement.name = this.currentEditName;
+      if (allergenElement.id === this.selectedAllergen.id) {
+        allergenElement.name = this.selectedAllergen.name;
         this.allergenService
           .updateAllergen(allergenElement)
           .subscribe((res) => {
@@ -55,30 +82,25 @@ export class AllergenTableComponent implements OnInit {
           });
       }
     });
-    this.displayEditPopup = false;
+    this.displayPopup = false;
   }
 
-  // editAllergen(allergen: Allergen) {
-  // }
-
-  getAllergens() {
-    this.allergenService.fetchAllergens().subscribe((allergens) => {
-      this.allergens = allergens;
-    });
+  showDeleteModalDialog(deleteId: number) {
+    this.displayDeletePopup = true;
+    this.currentDeleteId = deleteId;
   }
 
-  addAllergen() {
-    let newAllergen: Allergen = { name: this.addAllergenForm.value.name };
-    this.allergenService.addNewAllergen(newAllergen).subscribe(() => {
-      this.displayPopup = false;
-      this.getAllergens();
-    });
-
-    this.addAllergenForm.reset();
-  }
-
-  triggerDeletePopup() {
-    this.deleteConfirmationPopup.displayModalPopup = true;
-    console.log("works");
+  onDeletePopupClosed(deletion: boolean) {
+    this.displayDeletePopup = false;
+    if (deletion) {
+      this.allergenService
+        .deleteAllergen(this.currentDeleteId)
+        .subscribe(() => {
+          this.allergens.filter((allergen) => {
+            return allergen.id != this.currentDeleteId;
+          });
+          this.getAllergens();
+        });
+    }
   }
 }

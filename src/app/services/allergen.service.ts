@@ -28,4 +28,10 @@ export class AllergenService {
       allergen
     );
   }
+
+  deleteAllergen(allergenId: number): Observable<Allergen> {
+    return this.http.delete<Allergen>(
+      `${environment.baseURL}/api/scope/${environment.scopeKey}/item/${allergenId}`
+    );
+  }
 }

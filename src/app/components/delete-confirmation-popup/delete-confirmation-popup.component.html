@@ -1,9 +1,7 @@
-<p-button (click)="showModalDialog()" icon="pi pi-times" styleClass="delete-btn"></p-button>
-<p-dialog header="" [(visible)]="displayModalPopup" [modal]="true" [style]="{width: '50vw'}"
-  [breakpoints]="{'960px': '75vw', '640px': '100vw'}" [closable]="true">
-  <p class="m-0">Are you sure you want to permanently delete this?</p>
+<p-dialog header="" [(visible)]="deleteModalPopup" [modal]="true" [closable]="true" styleClass="delete-popup-confirm">
+  <p class="m-0">Sunteți sigur că doriți să continuați?</p>
   <ng-template pTemplate="footer">
-    <p-button label="Yes" class="p-button-text"></p-button>
-    <p-button (click)="displayModalPopup=false" label="No"></p-button>
+    <p-button label="Nu" (click)="closePopup(false)"></p-button>
+    <p-button label="Da" (click)="closePopup(true)" class="p-button-label"></p-button>
   </ng-template>
 </p-dialog>

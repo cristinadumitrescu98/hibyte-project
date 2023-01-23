@@ -21,4 +21,17 @@ export class IngredientService {
       ingredient
     );
   }
+
+  updateIngredient(ingredient: Ingredient): Observable<Ingredient> {
+    return this.http.put<Ingredient>(
+      `${environment.baseURL}/api/scope/${environment.scopeKey}/item/${ingredient.id}`,
+      ingredient
+    );
+  }
+
+  deleteIngredient(ingredientId: number): Observable<Ingredient> {
+    return this.http.delete<Ingredient>(
+      `${environment.baseURL}/api/scope/${environment.scopeKey}/item/${ingredientId}`
+    );
+  }
 }

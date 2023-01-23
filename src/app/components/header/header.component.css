@@ -2,3 +2,9 @@ img {
   width: 150px;
   height: 86.732;
 }
+
+@media screen and (max-width: 480px) {
+  img {
+    width: 7rem;
+  }
+}

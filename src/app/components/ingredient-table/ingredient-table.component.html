@@ -4,19 +4,20 @@
     [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
     currentPageReportTemplate="{first} - {last} of {totalRecords}" [rowsPerPageOptions]="[10,25,50]">
     <ng-template pTemplate="caption">
-      Ingredients
-      <button pButton label="Add Ingredient" class="p-button-rounded" (click)="showPopup()" icon="pi pi-plus"></button>
+      Ingrediente
+      <button pButton label="Adaugă ingredient" class="p-button-rounded add-btn-mobile-version" (click)="showPopup()"
+        icon="pi pi-plus"></button>
     </ng-template>
     <ng-template pTemplate="header">
       <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Energy</th>
-        <th>Fats</th>
-        <th>Carbohydrates</th>
-        <th>Fibers</th>
-        <th>Proteins</th>
-        <th>Sugar</th>
+        <th pSortableColumn="id">ID<p-sortIcon field="id"></p-sortIcon></th>
+        <th pSortableColumn="name">Nume<p-sortIcon field="name"></p-sortIcon></th>
+        <th pSortableColumn="energy">Valoare energetică<p-sortIcon field="energy"></p-sortIcon></th>
+        <th pSortableColumn="fats">Grăsimi<p-sortIcon field="fats"></p-sortIcon></th>
+        <th pSortableColumn="carbohydrates">Carbohidrați<p-sortIcon field="carbohydrates"></p-sortIcon></th>
+        <th pSortableColumn="fibers">Fibre <p-sortIcon field="fibers"></p-sortIcon></th>
+        <th pSortableColumn="protein">Proteine<p-sortIcon field="protein"></p-sortIcon></th>
+        <th pSortableColumn="sugar">Zaharuri<p-sortIcon field="sugar"></p-sortIcon></th>
         <th>Actions</th>
 
       </tr>
@@ -32,113 +33,105 @@
         <td>{{ingredient.protein}}</td>
         <td>{{ingredient.sugar}}</td>
         <td>
-          <p-button icon="pi pi-pencil" styleClass="edit-btn"
-            (click)="showEditPopup(ingredient.name, ingredient.energy, ingredient.fats, ingredient.carbohydrates, ingredient.fiber, ingredient.protein, ingredient.sugar)">
+          <p-button icon="pi pi-pencil" styleClass="edit-btn" (click)="showIngredientEditPopup(ingredient)">
           </p-button>
-          <app-delete-confirmation-popup styleClass="delete-btn"></app-delete-confirmation-popup>
+          <p-button (click)="showIngredientDeletePopup(ingredient.id)" icon="pi pi-times"
+            styleClass="delete-btn"></p-button>
         </td>
       </tr>
     </ng-template>
   </p-table>
 </div>
 
-<p-dialog header="Add Ingredient" [modal]="true" [breakpoints]="{'960px': '75vw', '640px': '100vw'}"
+<p-dialog header="Adăugare ingredient" [modal]="true" [breakpoints]="{'960px': '75vw', '640px': '100vw'}"
   [(visible)]="displayPopup" styleClass="custom-popup" [closable]="true">
   <div class="col-12 md:col-4">
     <div class="p-inputgroup">
-      <input type="text" pInputText placeholder="Ingredient Name" [(ngModel)]="newIngredient.name" name="name">
+      <input type="text" pInputText placeholder="Numele ingredientului" [(ngModel)]="newIngredient.name" name="name">
     </div>
   </div>
   <div class="col-12 md:col-4">
     <div class="p-inputgroup">
-      <input type="text" pInputText placeholder="Energy" [(ngModel)]="newIngredient.energy" name="energy">
-    </div>
-  </div>
-
-  <div class="col-12 md:col-4">
-    <div class="p-inputgroup">
-      <input type="text" pInputText placeholder="Fats" [(ngModel)]="newIngredient.fats" name="fats">
+      <input type="text" pInputText placeholder="Valoare energetică" [(ngModel)]="newIngredient.energy" name="energy">
     </div>
   </div>
 
   <div class="col-12 md:col-4">
     <div class="p-inputgroup">
-      <input type="text" pInputText placeholder="Carbohydrates" [(ngModel)]="newIngredient.carbohydrates"
+      <input type="text" pInputText placeholder="Grăsimi" [(ngModel)]="newIngredient.fats" name="fats">
+    </div>
+  </div>
+
+  <div class="col-12 md:col-4">
+    <div class="p-inputgroup">
+      <input type="text" pInputText placeholder="Carbohidrați" [(ngModel)]="newIngredient.carbohydrates"
         name="carbohydrates">
     </div>
   </div>
 
   <div class="col-12 md:col-4">
     <div class="p-inputgroup">
-      <input type="text" pInputText placeholder="Fiber" [(ngModel)]="newIngredient.fiber" name="fiber">
+      <input type="text" pInputText placeholder="Fibre" [(ngModel)]="newIngredient.fiber" name="fiber">
     </div>
   </div>
 
   <div class="col-12 md:col-4">
     <div class="p-inputgroup">
-      <input type="text" pInputText placeholder="Protein" [(ngModel)]="newIngredient.protein" name="protein">
+      <input type="text" pInputText placeholder="Proteine" [(ngModel)]="newIngredient.protein" name="protein">
     </div>
   </div>
   <div class="col-12 md:col-4">
     <div class="p-inputgroup">
-      <input type="text" pInputText placeholder="Sugar" [(ngModel)]="newIngredient.sugar" name="sugar">
+      <input type="text" pInputText placeholder="Zaharuri" [(ngModel)]="newIngredient.sugar" name="sugar">
     </div>
   </div>
   <ng-template pTemplate="footer">
     <div>
-      <button pButton label="Add" class="p-button-rounded" (click)="onSubmitNewIngredient()"></button>
-      <button pButton label="Cancel" (click)="displayPopup=false" class="p-button-rounded"></button>
+      <button pButton label="Anulează" (click)="displayPopup=false" class="p-button-rounded"></button>
+      <button pButton label="Adaugă" class="p-button-label" (click)="onSubmitNewIngredient()"></button>
     </div>
   </ng-template>
 </p-dialog>
 
-<p-dialog header="Edit Ingredient" [(visible)]="displayEditPopup" [breakpoints]="{'960px': '75vw', '640px': '100vw'}"
-  [closable]="true" styleClass="custom-popup" [modal]="true">
-  <div class="col-12 md:col-4">
-    <div class="p-inputgroup">
-      <input type=" text" pInputText value={{currentEditName}}>
+<p-dialog header="Modificare ingredient" [(visible)]="displayEditPopup" [closable]="true" styleClass="edit-popup"
+  [modal]="true">
+  <div class="w-80">
+    <div class="card1">
+      <p>Numele ingredientului</p>
+      <input class="custom-input" id="editName " pInputText [(ngModel)]="currentEditName">
     </div>
-  </div>
-
-  <div class="col-12 md:col-4">
-    <div class="p-inputgroup">
-      <input type=" text" pInputText value={{currentEditEnergy}}>
+    <div class="card1">
+      <p>Valoare energetică</p>
+      <input class="custom-input" type="text" id="editName" pInputText [(ngModel)]="currentEditEnergy">
     </div>
-  </div>
-
-  <div class="col-12 md:col-4">
-    <div class="p-inputgroup">
-      <input type=" text" pInputText value={{currentEditFats}}>
+    <div class="card1">
+      <p>Grăsimi</p>
+      <input id="fats" class="custom-input" type="text" pInputText [(ngModel)]="currentEditFats">
     </div>
-  </div>
-
-  <div class="col-12 md:col-4">
-    <div class="p-inputgroup">
-      <input type=" text" pInputText value={{currentEditCarbohydrates}}>
+    <div class="card1">
+      <p>Carbohidrați</p>
+      <input class="custom-input" type="text" pInputText [(ngModel)]="currentEditCarbohydrates">
     </div>
-  </div>
-
-  <div class="col-12 md:col-4">
-    <div class="p-inputgroup">
-      <input type=" text" pInputText value={{currentEditFibers}}>
+    <div class="card1">
+      <p>Fibre</p>
+      <input class="custom-input" type="text" pInputText [(ngModel)]="currentEditFibers">
     </div>
-  </div>
-
-  <div class="col-12 md:col-4">
-    <div class="p-inputgroup">
-      <input type=" text" pInputText value={{currentEditProteins}}>
+    <div class="card1">
+      <p>Proteine</p>
+      <input class="custom-input" type="text" pInputText [(ngModel)]="currentEditProteins">
     </div>
-  </div>
-
-  <div class="col-12 md:col-4">
-    <div class="p-inputgroup">
-      <input type=" text" pInputText value={{currentEditSugar}}>
+    <div class="card1">
+      <p>Zaharuri</p>
+      <input class="custom-input" type=" text" pInputText [(ngModel)]="currentEditSugar">
     </div>
   </div>
   <ng-template pTemplate="footer">
     <div>
-      <button pButton label="Save" class="p-button-label"></button>
-      <button pButton label="Cancel" (click)="displayEditPopup=false" class="p-button-rounded"></button>
+      <button pButton label="Anulează" (click)="displayEditPopup=false" class="p-button-rounded"></button>
+      <button pButton label="Salvează" class="p-button-label" (click)="onEditIngredientSaveButtonClick()"></button>
     </div>
   </ng-template>
 </p-dialog>
+
+<app-delete-confirmation-popup *ngIf="displayDeletePopup" [deleteModalPopup]="true"
+  (deletePopupClosed)="onDeleteIngredientPopupClosed($event)"></app-delete-confirmation-popup>

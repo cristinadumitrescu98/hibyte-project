@@ -12,3 +12,12 @@
 :host::ng-deep.navbar-allergen-btn {
   margin-right: 10px;
 }
+
+:host::ng-deep.navbar-allergen-btn:enabled:focus {
+  border-color: var(--light-sea-teal);
+  box-shadow: none;
+}
+
+:host::ng-deep.navbar-allergen-btn:hover {
+  border-color: var(--mango-orange);
+}

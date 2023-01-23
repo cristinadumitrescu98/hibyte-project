@@ -37,12 +37,12 @@
 :host::ng-deep.p-dialog-draggable .p-dialog-header,
 :host::ng-deep.p-dialog .p-dialog-content,
 :host::ng-deep.p-dialog .p-dialog-footer {
-  background-color: white;
-  color: var(--onyx-dark-grey);
+  background-color: white !important;
+  color: var(--onyx-dark-grey) !important;
 }
 
-:host::ng-deep.p-inputgroup .p-inputtext,
-.p-fluid .p-inputgroup .p-inputtext {
+:host::ng-deep .p-inputtext,
+.p-fluid .p-inputtext {
   background-color: white;
   color: var(--onyx-dark-grey);
   border: 1px solid var(--nickel-light-grey);
@@ -73,20 +73,112 @@
 :host::ng-deep.delete-btn {
   width: 3rem;
   border-radius: 3px;
+  border-color: transparent;
   margin-right: 5px;
   background-color: transparent;
-  color: var(--onyx-dark-grey);
 }
 
 :host::ng-deep.p-button-label:hover,
 :host::ng-deep.p-button-label:enabled:focus {
   border-color: var(--mango-orange);
+  color: white;
+}
+
+:host::ng-deep.p-dialog .p-dialog-content {
+  background-color: white;
+  color: var(--onyx-dark-grey);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: stretch;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+:host::ng-deep.edit-btn,
+:host::ng-deep.delete-btn {
+  color: var(--mango-orange);
 }
 
 :host::ng-deep.edit-btn:hover,
 :host::ng-deep.delete-btn:hover {
-  border: 1px solid var(--mango-orange);
+  border: 1px solid transparent;
   box-shadow: none;
   background-color: transparent;
+  color: var(--light-sea-teal) !important;
+}
+
+:host::ng-deep.p-dialog-header-close-icon {
   color: var(--onyx-dark-grey);
+}
+
+/* :host::ng-deep.edit-popup {
+  width: 25vw;
+  height: 18vw;
+} */
+
+.card1 {
+  width: 22rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.custom-input {
+  width: 10rem;
+  border-radius: 5px;
+}
+
+:host::ng-deep.p-paginator .p-dropdown .p-dropdown-label {
+  width: 1.8rem;
+  color: var(--onyx-dark-grey);
+  box-shadow: none;
+  border: 1px solid var(--light-sea-teal);
+}
+
+:host::ng-deep.p-datatable .p-sortable-column .p-sortable-column-icon,
+:host::ng-deep.p-datatable .p-sortable-column .p-sortable-column-icon:hover {
+  color: var(--onyx-dark-grey);
+}
+
+:host::ng-deep.p-datatable .p-sortable-column.p-highlight {
+  background-color: white;
+  color: var(--onyx-dark-grey);
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  :host::ng-deep.custom-popup {
+    height: 45vh;
+    width: 50vw;
+  }
+
+  :host::ng-deep.p-dialog .p-dialog-footer {
+    padding-top: 10px;
+  }
+
+  :host::ng-deep.add-btn-mobile-version {
+    font-size: 0;
+    width: 3rem;
+  }
+
+  :host::ng-deep.p-dialog {
+    width: 100vw;
+    height: 33vh;
+  }
+
+  :host::ng-deep.p-dialog .p-dialog-content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: space-around;
+    justify-content: center;
+  }
+
+  :host::ng-deep.p-inputtext {
+    border-color: var(--nickel-light-grey);
+  }
+
+  .card1 {
+    width: 25rem;
+  }
 }
