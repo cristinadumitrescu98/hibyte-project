@@ -3,6 +3,7 @@ import {
   Input,
   OnChanges,
   OnInit,
+  Output,
   SimpleChanges,
 } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
@@ -69,7 +70,7 @@ export class AllergenTableComponent implements OnInit {
     this.currentEditId = allergen.id;
   }
 
-  onEditSaveButtonClick(allergen: any) {
+  onEditSaveButtonClick(event: any) {
     this.allergens.forEach((allergenElement) => {
       if (allergenElement.id === this.selectedAllergen.id) {
         allergenElement.name = this.selectedAllergen.name;
