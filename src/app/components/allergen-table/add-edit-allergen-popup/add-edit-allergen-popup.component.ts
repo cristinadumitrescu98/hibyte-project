@@ -25,40 +25,31 @@ export class AddEditAllergenPopupComponent implements OnChanges {
     new EventEmitter<boolean>();
 
   addMode: boolean;
-  name?: string;
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.allergen) {
+      console.log("sdfjsndfjs");
       if (this.allergen == undefined) {
         this.addMode = true;
-        this.allergen = new Allergen();
-        console.log(this.allergen);
+        // this.allergen = new Allergen();
+        // this.allergen.name = "";
       } else {
         this.addMode = false;
-        this.name = this.allergen?.name;
-        console.log(this.allergen);
       }
     }
   }
 
   emitClickEvent() {
-    if (this.name) {
-      this.allergen.name = this.name;
-    }
     if (this.addMode) {
       this.allergenAdded.emit(this.allergen);
-      console.log("add");
     } else {
       this.allergenEdited.emit(this.allergen);
-      console.log("edit");
     }
-    this.closePopup();
+    this.onCloseAddEditPopup(true);
   }
 
-  closePopup() {
-    this.allergen = {} as Allergen;
-    this.name = "";
+  onCloseAddEditPopup(onClosing: boolean) {
+    this.closeAddEditPopup.emit(onClosing);
     this.displayAddEditPopup = false;
-    this.closeAddEditPopup.emit();
   }
 }

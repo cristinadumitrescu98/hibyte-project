@@ -17,14 +17,7 @@ import { AllergenService } from "../../services/allergen.service";
   styleUrls: ["./allergen-table.component.css"],
 })
 export class AllergenTableComponent implements OnInit {
-  @Input()
-  editMode: boolean = false;
-
   allergens: Allergen[] = [];
-
-  addAllergenForm: FormGroup = new FormGroup({
-    name: new FormControl("", Validators.required),
-  });
 
   sentAllergen: Allergen = new Allergen();
   selectedAllergen: Allergen;
@@ -55,13 +48,11 @@ export class AllergenTableComponent implements OnInit {
   }
 
   addAllergen(event: any) {
-    let newAllergen = { name: this.addAllergenForm.value.name };
-    this.allergenService.addNewAllergen(newAllergen).subscribe(() => {
+    this.allergenService.addNewAllergen(event).subscribe(() => {
       this.displayPopup = false;
+      this.sentAllergen = new Allergen();
       this.getAllergens();
     });
-
-    this.addAllergenForm.reset();
   }
 
   showEditPopup(allergen: Allergen) {
@@ -71,24 +62,18 @@ export class AllergenTableComponent implements OnInit {
   }
 
   onEditSaveButtonClick(event: any) {
-    this.allergens.forEach((allergenElement) => {
-      if (allergenElement.id === this.selectedAllergen.id) {
-        allergenElement.name = this.selectedAllergen.name;
-        this.allergenService
-          .updateAllergen(allergenElement)
-          .subscribe((res) => {
-            if (res) {
-              allergenElement = res;
-            }
-          });
-      }
-    });
+    console.log(event);
+    this.allergenService.updateAllergen(event).subscribe();
     this.displayPopup = false;
   }
 
   showDeleteModalDialog(deleteId: number) {
     this.displayDeletePopup = true;
     this.currentDeleteId = deleteId;
+  }
+
+  closingAddEditPopup(event: any) {
+    this.displayPopup = false;
   }
 
   onDeletePopupClosed(deletion: boolean) {
