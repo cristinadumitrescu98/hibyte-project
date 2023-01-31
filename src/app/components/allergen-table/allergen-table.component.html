@@ -6,7 +6,7 @@
     <ng-template pTemplate="caption">
       Alergeni
       <button pButton label="Adaugă alergen" class="p-button-rounded add-btn-mobile-version" icon="pi pi-plus"
-        (click)="displayPopup = true;"></button>
+        (click)="newAllergen()"></button>
     </ng-template>
     <ng-template pTemplate="header">
       <tr>
@@ -20,8 +20,7 @@
         <td>{{allergen.id}}</td>
         <td>{{allergen.name}}</td>
         <td>
-          <p-button icon="pi pi-pencil" styleClass="edit-btn"
-            (click)="displayPopup = true; selectedAllergen = allergen">
+          <p-button icon="pi pi-pencil" styleClass="edit-btn" (click)="editAllergen(allergen)">
           </p-button>
           <p-button (click)="showDeleteModalDialog(allergen.id)" icon="pi pi-times" styleClass="delete-btn"></p-button>
         </td>
@@ -30,8 +29,7 @@
   </p-table>
 
   <app-add-edit-allergen-popup [displayAddEditPopup]="displayPopup" [allergen]="selectedAllergen"
-    (closeAddEditPopup)="displayPopup = false" (allergenAdded)="addAllergen($event)"
-    (allergenEdited)="onEditSaveButtonClick($event)"
+    (allergenAdded)="addAllergen($event)" (allergenEdited)="onEditSaveButtonClick($event)"
     (onCloseAddEditPopup)="closingAddEditPopup($event)"></app-add-edit-allergen-popup>
 
   <app-delete-confirmation-popup *ngIf="displayDeletePopup" [deleteModalPopup]="true"

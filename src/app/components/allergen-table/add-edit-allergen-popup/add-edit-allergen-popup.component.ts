@@ -27,12 +27,11 @@ export class AddEditAllergenPopupComponent implements OnChanges {
   addMode: boolean;
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.allergen) {
-      console.log("sdfjsndfjs");
-      if (this.allergen == undefined) {
+    if (!changes.allergen?.firstChange) {
+      if (!this.allergen.id) {
         this.addMode = true;
-        // this.allergen = new Allergen();
-        // this.allergen.name = "";
+        this.allergen = new Allergen();
+        this.allergen.name = "";
       } else {
         this.addMode = false;
       }

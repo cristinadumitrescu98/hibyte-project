@@ -1,12 +1,4 @@
-import {
-  Component,
-  Input,
-  OnChanges,
-  OnInit,
-  Output,
-  SimpleChanges,
-} from "@angular/core";
-import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { Component, OnInit } from "@angular/core";
 
 import { Allergen } from "src/app/data-model/allergen.model";
 import { AllergenService } from "../../services/allergen.service";
@@ -18,16 +10,10 @@ import { AllergenService } from "../../services/allergen.service";
 })
 export class AllergenTableComponent implements OnInit {
   allergens: Allergen[] = [];
-
-  sentAllergen: Allergen = new Allergen();
-  selectedAllergen: Allergen;
+  selectedAllergen: Allergen = new Allergen();
 
   displayPopup: boolean;
-  displayEditPopup: boolean;
   displayDeletePopup: boolean;
-
-  currentEditId?: number;
-  currentEditName: string;
 
   currentDeleteId: number;
 
@@ -35,10 +21,6 @@ export class AllergenTableComponent implements OnInit {
 
   ngOnInit() {
     this.getAllergens();
-  }
-
-  showPopup() {
-    this.displayPopup = true;
   }
 
   getAllergens() {
@@ -50,19 +32,23 @@ export class AllergenTableComponent implements OnInit {
   addAllergen(event: any) {
     this.allergenService.addNewAllergen(event).subscribe(() => {
       this.displayPopup = false;
-      this.sentAllergen = new Allergen();
       this.getAllergens();
     });
   }
 
-  showEditPopup(allergen: Allergen) {
-    this.displayEditPopup = true;
-    this.currentEditName = allergen.name;
-    this.currentEditId = allergen.id;
+  newAllergen() {
+    this.displayPopup = true;
+    this.selectedAllergen.name = "";
+    this.selectedAllergen = new Allergen();
+  }
+
+  editAllergen(allergen: Allergen) {
+    this.displayPopup = true;
+    this.selectedAllergen.name = allergen.name;
+    this.selectedAllergen = allergen;
   }
 
   onEditSaveButtonClick(event: any) {
-    console.log(event);
     this.allergenService.updateAllergen(event).subscribe();
     this.displayPopup = false;
   }
