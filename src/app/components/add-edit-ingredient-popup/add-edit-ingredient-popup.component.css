@@ -1,0 +1,16 @@
+.card1 {
+  width: 26rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.custom-input {
+  width: 8rem;
+  border-radius: 5px;
+}
+
+:host::ng-deep.edit-popup {
+  width: 38vw;
+  height: 38vw;
+}

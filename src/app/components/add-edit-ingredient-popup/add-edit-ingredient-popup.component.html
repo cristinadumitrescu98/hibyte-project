@@ -1,0 +1,39 @@
+<p-dialog header="Modificare ingredient" [(visible)]="displayAddEditIngredientPopup" [closable]="true"
+  styleClass="edit-popup" [modal]="true" (onHide)="onCloseAddEditIngredientPopup(true)">
+  <div class="w-80">
+    <div class="card1">
+      <p>Numele ingredientului</p>
+      <input class="custom-input" id="name " pInputText [(ngModel)]="ingredient.name">
+    </div>
+    <div class="card1">
+      <p>Valoare energetică</p>
+      <input class="custom-input" type="text" id="energy" pInputText [(ngModel)]="ingredient.energy">
+    </div>
+    <div class="card1">
+      <p>Grăsimi</p>
+      <input id="fats" class="custom-input" type="text" pInputText [(ngModel)]="ingredient.fats">
+    </div>
+    <div class="card1">
+      <p>Carbohidrați</p>
+      <input class="custom-input" type="text" pInputText [(ngModel)]="ingredient.carbohydrates">
+    </div>
+    <div class="card1">
+      <p>Fibre</p>
+      <input class="custom-input" type="text" pInputText [(ngModel)]="ingredient.fiber">
+    </div>
+    <div class="card1">
+      <p>Proteine</p>
+      <input class="custom-input" type="text" pInputText [(ngModel)]="ingredient.protein">
+    </div>
+    <div class="card1">
+      <p>Zaharuri</p>
+      <input class="custom-input" type=" text" pInputText [(ngModel)]="ingredient.sugar">
+    </div>
+  </div>
+  <ng-template pTemplate="footer">
+    <div>
+      <button pButton label="Anulează" (click)="onCloseAddEditIngredientPopup(true)" class="p-button-rounded"></button>
+      <button pButton label="Salvează" class="p-button-label" (click)="emitClickEvent()"></button>
+    </div>
+  </ng-template>
+</p-dialog>

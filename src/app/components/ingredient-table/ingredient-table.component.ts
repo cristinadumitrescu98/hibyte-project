@@ -10,20 +10,10 @@ import { IngredientService } from "../../services/ingredient.service";
 })
 export class IngredientTableComponent implements OnInit {
   ingredients: Ingredient[] = [];
-  newIngredient: Ingredient = new Ingredient();
+  selectedIngredient: Ingredient;
 
   displayPopup: boolean;
-  displayEditPopup: boolean;
   displayDeletePopup: boolean;
-
-  currentEditId?: number;
-  currentEditName: string;
-  currentEditEnergy: number;
-  currentEditFats: number;
-  currentEditCarbohydrates: number;
-  currentEditFibers: number;
-  currentEditProteins: number;
-  currentEditSugar: number;
 
   currentDeleteId: number;
 
@@ -39,49 +29,27 @@ export class IngredientTableComponent implements OnInit {
     });
   }
 
-  showPopup() {
+  newIngredient() {
     this.displayPopup = true;
+    this.selectedIngredient = new Ingredient();
+    this.selectedIngredient.name = "";
   }
 
-  onSubmitNewIngredient() {
-    this.ingredientService
-      .addNewIngredient(this.newIngredient)
-      .subscribe(() => {
-        this.displayPopup = false;
-        this.newIngredient = new Ingredient();
-        this.getIngredients();
-      });
-  }
-
-  showIngredientEditPopup(ingredient: Ingredient) {
-    this.displayEditPopup = true;
-    this.currentEditId = ingredient.id;
-    this.currentEditName = ingredient.name;
-    this.currentEditEnergy = ingredient.energy;
-    this.currentEditFats = ingredient.fats;
-    this.currentEditCarbohydrates = ingredient.carbohydrates;
-    this.currentEditFibers = ingredient.fiber;
-    this.currentEditProteins = ingredient.protein;
-    this.currentEditSugar = ingredient.sugar;
-  }
-
-  onEditIngredientSaveButtonClick() {
-    this.ingredients.forEach((ingElement) => {
-      if (ingElement.id === this.currentEditId) {
-        ingElement.name = this.currentEditName;
-        ingElement.energy = this.currentEditEnergy;
-        ingElement.fats = this.currentEditFats;
-        ingElement.fiber = this.currentEditFibers;
-        ingElement.protein = this.currentEditProteins;
-        ingElement.sugar = this.currentEditSugar;
-        this.ingredientService.updateIngredient(ingElement).subscribe((res) => {
-          if (res) {
-            ingElement = res;
-          }
-        });
-      }
+  onSubmitNewIngredient(event: any) {
+    this.ingredientService.addNewIngredient(event).subscribe(() => {
+      this.displayPopup = false;
+      this.getIngredients();
     });
-    this.displayEditPopup = false;
+  }
+
+  onEditIngredientSaveButtonClick(event: any) {
+    this.ingredientService.updateIngredient(event).subscribe();
+    this.displayPopup = false;
+  }
+
+  editIngredient(ingredient: Ingredient) {
+    this.displayPopup = true;
+    this.selectedIngredient = ingredient;
   }
 
   showIngredientDeletePopup(deleteIngredientId: number) {
@@ -101,5 +69,9 @@ export class IngredientTableComponent implements OnInit {
           this.getIngredients();
         });
     }
+  }
+
+  closePopup(event: any) {
+    this.displayPopup = false;
   }
 }

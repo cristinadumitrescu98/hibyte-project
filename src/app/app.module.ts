@@ -24,6 +24,7 @@ import { AllergenService } from "./services/allergen.service";
 import { IngredientService } from "./services/ingredient.service";
 import { DeleteConfirmationPopupComponent } from "./components/delete-confirmation-popup/delete-confirmation-popup.component";
 import { AddEditAllergenPopupComponent } from "./components/add-edit-allergen-popup/add-edit-allergen-popup.component";
+import { AddEditIngredientPopupComponent } from './components/add-edit-ingredient-popup/add-edit-ingredient-popup.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { AddEditAllergenPopupComponent } from "./components/add-edit-allergen-po
     AppComponent,
     DeleteConfirmationPopupComponent,
     AddEditAllergenPopupComponent,
+    AddEditIngredientPopupComponent,
   ],
   imports: [
     BrowserModule,

@@ -114,7 +114,7 @@
   color: var(--onyx-dark-grey);
 }
 
-:host::ng-deep.edit-popup {
+/* :host::ng-deep.edit-popup {
   width: 38vw;
   height: 38vw;
 }
@@ -129,7 +129,7 @@
 .custom-input {
   width: 8rem;
   border-radius: 5px;
-}
+} */
 
 :host::ng-deep.p-datatable .p-sortable-column.p-highlight {
   background-color: white;
