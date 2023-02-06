@@ -1,5 +1,5 @@
 ::ng-deep.p-datatable .p-datatable-thead > tr > th {
-  background-color: white;
+  background-color: var(--primary-color-white);
   color: var(--onyx-dark-grey);
   border-width: 0 1px 1px 1px;
   border-color: var(--nickel-light-grey);
@@ -7,7 +7,7 @@
 }
 
 ::ng-deep.p-datatable .p-datatable-header {
-  background-color: white;
+  background-color: var(--primary-color-white);
   color: var(--onyx-dark-grey);
   border-width: 0 1px 1px 1px;
 
@@ -18,8 +18,7 @@
 }
 
 ::ng-deep.p-datatable.p-datatable-gridlines .p-datatable-header {
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  border-radius: 5px 5px 0 0;
 }
 
 ::ng-deep.p-datatable.p-datatable-gridlines:has(.p-datatable-thead):has(
@@ -42,7 +41,7 @@
 }
 
 ::ng-deep.p-datatable .p-datatable-tbody > tr > td {
-  background-color: white;
+  background-color: var(--primary-color-white);
   color: var(--onyx-dark-grey);
 }
 
@@ -67,15 +66,14 @@
 }
 
 ::ng-deep.p-dropdown .p-dropdown-label {
-  color: white;
+  color: var(--primary-color-white);
 }
 
 ::ng-deep.p-datatable.p-datatable-gridlines .p-paginator-bottom {
-  background-color: white;
+  background-color: var(--primary-color-white);
   border-width: 0 1px 1px 1px;
   border-color: var(--nickel-light-grey);
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-radius: 0 0 5px 5px;
 }
 
 ::ng-deep.p-paginator .p-paginator-first,
@@ -119,7 +117,7 @@
 ::ng-deep.p-paginator .p-paginator-current {
   background-color: var(--light-sea-teal);
   border-color: var(--light-sea-teal);
-  color: white;
+  color: var(--primary-color-white);
 }
 
 ::ng-deep.p-paginator

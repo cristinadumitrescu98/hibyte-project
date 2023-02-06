@@ -10,7 +10,7 @@
 }
 
 :host::ng-deep.navbar-allergen-btn {
-  margin-right: 10px;
+  margin-right: 0.6rem;
 }
 
 :host::ng-deep.navbar-allergen-btn:enabled:focus {

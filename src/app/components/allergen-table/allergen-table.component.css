@@ -1,29 +1,29 @@
 :host::ng-deep.p-button:hover {
   background-color: var(--mango-orange);
-  border-radius: 3px;
+  border-radius: 0.1rem;
 }
 
 :host::ng-deep.p-button {
   background-color: var(--light-sea-teal);
-  color: white;
+  color: var(--primary-color-white);
   border-color: var(--light-sea-teal);
-  width: 180px;
-  border-radius: 3px;
+  width: 11.25rem;
+  border-radius: 0.1rem;
 }
 
 :host::ng-deep.p-button.p-button-success:hover,
 :host::ng-deep.p-button.p-button-rounded:hover {
   background-color: var(--light-sea-teal);
   border-color: var(--light-sea-teal);
-  color: white;
-  border-radius: 3px;
+  color: var(--primary-color-white);
+  border-radius: 0.1rem;
 }
 
 :host::ng-deep.p-button.p-button-success,
 :host::ng-deep.p-button.p-button-rounded {
   background-color: var(--mango-orange);
   border-color: var(--mango-orange);
-  border-radius: 3px;
+  border-radius: 0.1rem;
 }
 
 :host::ng-deep.p-paginator .p-paginator-pages .p-paginator-page:hover {
@@ -37,13 +37,13 @@
 :host::ng-deep.p-dialog-draggable .p-dialog-header,
 :host::ng-deep.p-dialog .p-dialog-content,
 :host::ng-deep.p-dialog .p-dialog-footer {
-  background-color: white !important;
+  background-color: var(--primary-color-white) !important;
   color: var(--onyx-dark-grey) !important;
 }
 
 :host::ng-deep .p-inputtext,
 .p-fluid .p-inputtext {
-  background-color: white;
+  background-color: var(--primary-color-white);
   color: var(--onyx-dark-grey);
   border: 1px solid var(--nickel-light-grey);
 }
@@ -72,20 +72,20 @@
 :host::ng-deep.edit-btn,
 :host::ng-deep.delete-btn {
   width: 3rem;
-  border-radius: 3px;
+  border-radius: 0.1rem;
   border-color: transparent;
-  margin-right: 5px;
+  margin-right: 0.3rem;
   background-color: transparent;
 }
 
 :host::ng-deep.p-button-label:hover,
 :host::ng-deep.p-button-label:enabled:focus {
   border-color: var(--mango-orange);
-  color: white;
+  color: var(--primary-color-white);
 }
 
 :host::ng-deep.p-dialog .p-dialog-content {
-  background-color: white;
+  background-color: var(--primary-color-white);
   color: var(--onyx-dark-grey);
   display: flex;
   flex-direction: row;
@@ -112,11 +112,6 @@
   color: var(--onyx-dark-grey);
 }
 
-/* :host::ng-deep.edit-popup {
-  width: 25vw;
-  height: 18vw;
-} */
-
 .card1 {
   width: 22rem;
   display: flex;
@@ -126,7 +121,7 @@
 
 .custom-input {
   width: 10rem;
-  border-radius: 5px;
+  border-radius: 0.3rem;
 }
 
 :host::ng-deep.p-paginator .p-dropdown .p-dropdown-label {
@@ -142,7 +137,7 @@
 }
 
 :host::ng-deep.p-datatable .p-sortable-column.p-highlight {
-  background-color: white;
+  background-color: var(--primary-color-white);
   color: var(--onyx-dark-grey);
 }
 
@@ -153,7 +148,7 @@
   }
 
   :host::ng-deep.p-dialog .p-dialog-footer {
-    padding-top: 10px;
+    padding-top: 0.6rem;
   }
 
   :host::ng-deep.add-btn-mobile-version {

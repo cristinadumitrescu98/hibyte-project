@@ -44,7 +44,6 @@ export class AllergenTableComponent implements OnInit {
 
   editAllergen(allergen: Allergen) {
     this.displayPopup = true;
-    this.selectedAllergen.name = allergen.name;
     this.selectedAllergen = allergen;
   }
 
@@ -68,9 +67,9 @@ export class AllergenTableComponent implements OnInit {
       this.allergenService
         .deleteAllergen(this.currentDeleteId)
         .subscribe(() => {
-          this.allergens.filter((allergen) => {
-            return allergen.id != this.currentDeleteId;
-          });
+          this.allergens.filter(
+            (allergen) => allergen.id != this.currentDeleteId
+          );
           this.getAllergens();
         });
     }

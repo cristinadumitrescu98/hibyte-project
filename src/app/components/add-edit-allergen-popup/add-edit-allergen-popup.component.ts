@@ -17,9 +17,9 @@ import { Allergen } from "src/app/data-model/allergen.model";
 export class AddEditAllergenPopupComponent implements OnChanges {
   @Input() displayAddEditPopup: boolean;
   @Input() allergen: Allergen;
-  @Output() allergenAdded: EventEmitter<Allergen> =
+  @Output() saveButtonClicked: EventEmitter<Allergen> =
     new EventEmitter<Allergen>();
-  @Output() allergenEdited: EventEmitter<Allergen> =
+  @Output() editButtonClicked: EventEmitter<Allergen> =
     new EventEmitter<Allergen>();
   @Output() closeAddEditPopup: EventEmitter<boolean> =
     new EventEmitter<boolean>();
@@ -40,9 +40,9 @@ export class AddEditAllergenPopupComponent implements OnChanges {
 
   emitClickEvent() {
     if (this.addMode) {
-      this.allergenAdded.emit(this.allergen);
+      this.saveButtonClicked.emit(this.allergen);
     } else {
-      this.allergenEdited.emit(this.allergen);
+      this.editButtonClicked.emit(this.allergen);
     }
     this.onCloseAddEditPopup(true);
   }

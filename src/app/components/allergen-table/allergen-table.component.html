@@ -29,7 +29,7 @@
   </p-table>
 
   <app-add-edit-allergen-popup [displayAddEditPopup]="displayPopup" [allergen]="selectedAllergen"
-    (allergenAdded)="addAllergen($event)" (allergenEdited)="onEditSaveButtonClick($event)"
+    (saveButtonClicked)="addAllergen($event)" (editButtonClicked)="onEditSaveButtonClick($event)"
     (onCloseAddEditPopup)="closingAddEditPopup($event)"></app-add-edit-allergen-popup>
 
   <app-delete-confirmation-popup *ngIf="displayDeletePopup" [deleteModalPopup]="true"
