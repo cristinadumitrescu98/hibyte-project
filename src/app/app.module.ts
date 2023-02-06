@@ -20,11 +20,10 @@ import { AuthenticationComponent } from "./components/authentication/authenticat
 import { IngredientTableComponent } from "./components/ingredient-table/ingredient-table.component";
 import { AuthInterceptorService } from "./services/auth-interceptor.service";
 import { AuthService } from "./services/auth.service";
-import { AllergenService } from "./services/allergen.service";
-import { IngredientService } from "./services/ingredient.service";
 import { DeleteConfirmationPopupComponent } from "./components/delete-confirmation-popup/delete-confirmation-popup.component";
 import { AddEditAllergenPopupComponent } from "./components/add-edit-allergen-popup/add-edit-allergen-popup.component";
 import { AddEditIngredientPopupComponent } from './components/add-edit-ingredient-popup/add-edit-ingredient-popup.component';
+import { DataService } from "./services/data.service";
 
 @NgModule({
   declarations: [
@@ -55,9 +54,8 @@ import { AddEditIngredientPopupComponent } from './components/add-edit-ingredien
     DialogModule,
   ],
   providers: [
-    AllergenService,
+    DataService,
     AuthService,
-    IngredientService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,

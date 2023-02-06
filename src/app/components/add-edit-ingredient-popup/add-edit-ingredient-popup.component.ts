@@ -17,11 +17,11 @@ export class AddEditIngredientPopupComponent implements OnChanges {
   @Input() displayAddEditIngredientPopup: boolean;
   @Input() ingredient: Ingredient;
 
-  @Output() ingredientAdded: EventEmitter<Ingredient> =
+  @Output() ingredientSaveButtonClicked: EventEmitter<Ingredient> =
     new EventEmitter<Ingredient>();
-  @Output() ingredientEdited: EventEmitter<Ingredient> =
+  @Output() ingredientEditButtonClicked: EventEmitter<Ingredient> =
     new EventEmitter<Ingredient>();
-  @Output() closeAddEditIngredientPopup: EventEmitter<boolean> =
+  @Output() closeAddEditIngredientPopupClicked: EventEmitter<boolean> =
     new EventEmitter<boolean>();
 
   isAddMode: boolean;
@@ -39,15 +39,15 @@ export class AddEditIngredientPopupComponent implements OnChanges {
 
   emitClickEvent() {
     if (this.isAddMode) {
-      this.ingredientAdded.emit(this.ingredient);
+      this.ingredientSaveButtonClicked.emit(this.ingredient);
     } else {
-      this.ingredientEdited.emit(this.ingredient);
+      this.ingredientEditButtonClicked.emit(this.ingredient);
     }
     this.onCloseAddEditIngredientPopup(true);
   }
 
   onCloseAddEditIngredientPopup(onClosing: boolean) {
-    this.closeAddEditIngredientPopup.emit(onClosing);
+    this.closeAddEditIngredientPopupClicked.emit(onClosing);
     this.displayAddEditIngredientPopup = false;
   }
 }

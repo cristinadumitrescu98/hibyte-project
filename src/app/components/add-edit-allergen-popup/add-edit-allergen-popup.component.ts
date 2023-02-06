@@ -21,7 +21,7 @@ export class AddEditAllergenPopupComponent implements OnChanges {
     new EventEmitter<Allergen>();
   @Output() allergenEdited: EventEmitter<Allergen> =
     new EventEmitter<Allergen>();
-  @Output() closeAddEditPopup: EventEmitter<boolean> =
+  @Output() closeAddEditPopupClicked: EventEmitter<boolean> =
     new EventEmitter<boolean>();
 
   addMode: boolean;
@@ -48,7 +48,7 @@ export class AddEditAllergenPopupComponent implements OnChanges {
   }
 
   onCloseAddEditPopup(onClosing: boolean) {
-    this.closeAddEditPopup.emit(onClosing);
+    this.closeAddEditPopupClicked.emit(onClosing);
     this.displayAddEditPopup = false;
   }
 }

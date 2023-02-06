@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 
 import { Ingredient } from "src/app/data-model/ingredient.model";
-import { IngredientService } from "../../services/ingredient.service";
+import { DataService, ItemKey } from "src/app/services/data.service";
 
 @Component({
   selector: "app-ingredient-table",
@@ -17,37 +17,39 @@ export class IngredientTableComponent implements OnInit {
 
   currentDeleteId: number;
 
-  constructor(private ingredientService: IngredientService) {}
+  constructor(private dataService: DataService) {}
 
   ngOnInit() {
     this.getIngredients();
   }
 
   getIngredients() {
-    this.ingredientService.fetchIngredients().subscribe((ingredients) => {
-      this.ingredients = ingredients;
-    });
+    this.dataService
+      .fetchData(ItemKey.INGREDIENT, Ingredient)
+      .subscribe((ingredients) => {
+        this.ingredients = ingredients;
+      });
   }
 
-  newIngredient() {
+  createNewIngredient() {
     this.displayPopup = true;
     this.selectedIngredient = new Ingredient();
     this.selectedIngredient.name = "";
   }
 
   onSubmitNewIngredient(event: any) {
-    this.ingredientService.addNewIngredient(event).subscribe(() => {
+    this.dataService.addItem(ItemKey.INGREDIENT, event).subscribe(() => {
       this.displayPopup = false;
       this.getIngredients();
     });
   }
 
   onEditIngredientSaveButtonClick(event: any) {
-    this.ingredientService.updateIngredient(event).subscribe();
+    this.dataService.updateItem(ItemKey.INGREDIENT, event).subscribe();
     this.displayPopup = false;
   }
 
-  editIngredient(ingredient: Ingredient) {
+  editSelectedIngredient(ingredient: Ingredient) {
     this.displayPopup = true;
     this.selectedIngredient = ingredient;
   }
@@ -60,12 +62,12 @@ export class IngredientTableComponent implements OnInit {
   onDeleteIngredientPopupClosed(ingredientDeletion: boolean) {
     this.displayDeletePopup = false;
     if (ingredientDeletion) {
-      this.ingredientService
-        .deleteIngredient(this.currentDeleteId)
+      this.dataService
+        .deleteItem(ItemKey.INGREDIENT, { id: this.currentDeleteId })
         .subscribe(() => {
-          this.ingredients.filter((ingredient) => {
-            return ingredient.id != this.currentDeleteId;
-          });
+          this.ingredients.filter(
+            (ingredient) => ingredient.id != this.currentDeleteId
+          );
           this.getIngredients();
         });
     }
