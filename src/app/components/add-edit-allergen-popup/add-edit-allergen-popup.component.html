@@ -1,0 +1,13 @@
+<p-dialog [(visible)]="displayAddEditPopup" (onHide)="onCloseAddEditPopup(true)" [closable]="true"
+  styleClass="edit-popup" [modal]="true">
+  <div class="card1">
+    <p>Numele alergenului</p>
+    <input class="custom-input" type=" text" pInputText [(ngModel)]="allergen.name">
+  </div>
+  <ng-template pTemplate="footer">
+    <div>
+      <button pButton label="Anulează" (click)="onCloseAddEditPopup(true)" class="p-button-rounded"></button>
+      <button pButton label="Salvează" class="p-button-label" (click)="emitClickEvent()"></button>
+    </div>
+  </ng-template>
+</p-dialog>

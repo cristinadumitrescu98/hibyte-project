@@ -1,4 +1,10 @@
 img {
-  width: 150px;
-  height: 86.732;
+  width: 9rem;
+  height: 4rem;
+}
+
+@media screen and (max-width: 480px) {
+  img {
+    width: 7rem;
+  }
 }

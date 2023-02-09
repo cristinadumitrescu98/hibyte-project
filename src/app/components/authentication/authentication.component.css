@@ -12,7 +12,7 @@
 }
 
 :host::ng-deep.p-inputtext {
-  background-color: white;
+  background-color: var(--primary-color-white);
   color: var(--onyx-dark-grey);
   width: 250px;
   border: 1px solid var(--light-sea-teal);

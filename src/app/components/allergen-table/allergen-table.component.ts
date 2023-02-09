@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { FormControl, FormGroup, Validators } from "@angular/forms";
 
 import { Allergen } from "src/app/data-model/allergen.model";
 import { AllergenService } from "../../services/allergen.service";
@@ -11,21 +10,17 @@ import { AllergenService } from "../../services/allergen.service";
 })
 export class AllergenTableComponent implements OnInit {
   allergens: Allergen[] = [];
-
-  addAllergenForm: FormGroup = new FormGroup({
-    name: new FormControl("", Validators.required),
-  });
+  selectedAllergen: Allergen = new Allergen();
 
   displayPopup: boolean;
+  displayDeletePopup: boolean;
+
+  currentDeleteId: number;
 
   constructor(private allergenService: AllergenService) {}
 
   ngOnInit() {
     this.getAllergens();
-  }
-
-  showPopup() {
-    this.displayPopup = true;
   }
 
   getAllergens() {
@@ -34,13 +29,49 @@ export class AllergenTableComponent implements OnInit {
     });
   }
 
-  addAllergen() {
-    let newAllergen: Allergen = { name: this.addAllergenForm.value.name };
-    this.allergenService.addNewAllergen(newAllergen).subscribe(() => {
+  addAllergen(event: any) {
+    this.allergenService.addNewAllergen(event).subscribe(() => {
       this.displayPopup = false;
       this.getAllergens();
     });
+  }
 
-    this.addAllergenForm.reset();
+  newAllergen() {
+    this.displayPopup = true;
+    this.selectedAllergen.name = "";
+    this.selectedAllergen = new Allergen();
+  }
+
+  editAllergen(allergen: Allergen) {
+    this.displayPopup = true;
+    this.selectedAllergen = allergen;
+  }
+
+  onEditSaveButtonClick(event: any) {
+    this.allergenService.updateAllergen(event).subscribe();
+    this.displayPopup = false;
+  }
+
+  showDeleteModalDialog(deleteId: number) {
+    this.displayDeletePopup = true;
+    this.currentDeleteId = deleteId;
+  }
+
+  closingAddEditPopup(event: any) {
+    this.displayPopup = false;
+  }
+
+  onDeletePopupClosed(deletion: boolean) {
+    this.displayDeletePopup = false;
+    if (deletion) {
+      this.allergenService
+        .deleteAllergen(this.currentDeleteId)
+        .subscribe(() => {
+          this.allergens.filter(
+            (allergen) => allergen.id != this.currentDeleteId
+          );
+          this.getAllergens();
+        });
+    }
   }
 }

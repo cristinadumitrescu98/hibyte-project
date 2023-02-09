@@ -4,43 +4,33 @@
     [paginator]="true" [rows]="7" [showCurrentPageReport]="true"
     currentPageReportTemplate="{first} - {last} of {totalRecords}" [rowsPerPageOptions]="[5,10,20]">
     <ng-template pTemplate="caption">
-      Allergens
-      <button pButton label="Add Allergen" class="p-button-rounded" icon="pi pi-external-link"
-        (click)="showPopup()"></button>
+      Alergeni
+      <button pButton label="Adaugă alergen" class="p-button-rounded add-btn-mobile-version" icon="pi pi-plus"
+        (click)="newAllergen()"></button>
     </ng-template>
     <ng-template pTemplate="header">
       <tr>
-        <th>ID</th>
-        <th>Name</th>
+        <th pSortableColumn="id">ID <p-sortIcon field="id"></p-sortIcon></th>
+        <th pSortableColumn="name">Nume<p-sortIcon field="name"></p-sortIcon></th>
+        <th>Acțiuni</th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-allergen>
       <tr>
         <td>{{allergen.id}}</td>
         <td>{{allergen.name}}</td>
+        <td>
+          <p-button icon="pi pi-pencil" styleClass="edit-btn" (click)="editAllergen(allergen)">
+          </p-button>
+          <p-button (click)="showDeleteModalDialog(allergen.id)" icon="pi pi-times" styleClass="delete-btn"></p-button>
+        </td>
       </tr>
     </ng-template>
   </p-table>
 
-  <p-dialog header="Add Allergen" [(visible)]="displayPopup" [modal]="true"
-    [breakpoints]="{'960px': '75vw', '640px': '100vw'}" styleClass="custom-popup" [closable]="true"
-    closeIcon="pi pi-times">
-    <form [formGroup]="addAllergenForm" novalidate #allergenform="ngForm">
-      <div class="card">
-        <div class="grid p-fluid">
-          <div class="col-12 md:col-4">
-            <div class="p-inputgroup">
-              <input type="text" pInputText placeholder="Allergen Name" formControlName="name">
-            </div>
-          </div>
-        </div>
-      </div>
-    </form>
-    <ng-template pTemplate="footer">
-      <div>
-        <button pButton label="Add Allergen" class="p-button-rounded" icon=" pi pi-plus"
-          (click)="addAllergen()"></button>
-      </div>
-    </ng-template>
-  </p-dialog>
-</div>
+  <app-add-edit-allergen-popup [displayAddEditPopup]="displayPopup" [allergen]="selectedAllergen"
+    (saveButtonClicked)="addAllergen($event)" (editButtonClicked)="onEditSaveButtonClick($event)"
+    (onCloseAddEditPopup)="closingAddEditPopup($event)"></app-add-edit-allergen-popup>
+
+  <app-delete-confirmation-popup *ngIf="displayDeletePopup" [deleteModalPopup]="true"
+    (deletePopupClosed)="onDeletePopupClosed($event)"></app-delete-confirmation-popup>

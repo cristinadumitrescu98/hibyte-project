@@ -21,4 +21,17 @@ export class AllergenService {
       allergen
     );
   }
+
+  updateAllergen(allergen: Allergen): Observable<Allergen> {
+    return this.http.put<Allergen>(
+      `${environment.baseURL}/api/scope/${environment.scopeKey}/item/${allergen.id}`,
+      allergen
+    );
+  }
+
+  deleteAllergen(allergenId: number): Observable<Allergen> {
+    return this.http.delete<Allergen>(
+      `${environment.baseURL}/api/scope/${environment.scopeKey}/item/${allergenId}`
+    );
+  }
 }
