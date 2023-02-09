@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 
 import { Allergen } from "src/app/data-model/allergen.model";
-import { AllergenService } from "../../services/allergen.service";
+import { DataService, ItemKey } from "src/app/services/data.service";
 
 @Component({
   selector: "app-allergen-table",
@@ -17,38 +17,40 @@ export class AllergenTableComponent implements OnInit {
 
   currentDeleteId: number;
 
-  constructor(private allergenService: AllergenService) {}
+  constructor(private dataService: DataService) {}
 
   ngOnInit() {
     this.getAllergens();
   }
 
   getAllergens() {
-    this.allergenService.fetchAllergens().subscribe((allergens) => {
-      this.allergens = allergens;
-    });
+    this.dataService
+      .fetchData(ItemKey.ALLERGEN, Allergen)
+      .subscribe((allergens) => {
+        this.allergens = allergens;
+      });
   }
 
   addAllergen(event: any) {
-    this.allergenService.addNewAllergen(event).subscribe(() => {
+    this.dataService.addItem(ItemKey.ALLERGEN, event).subscribe(() => {
       this.displayPopup = false;
       this.getAllergens();
     });
   }
 
-  newAllergen() {
+  createNewAllergen() {
     this.displayPopup = true;
     this.selectedAllergen.name = "";
     this.selectedAllergen = new Allergen();
   }
 
-  editAllergen(allergen: Allergen) {
+  editSelectedAllergen(allergen: Allergen) {
     this.displayPopup = true;
     this.selectedAllergen = allergen;
   }
 
   onEditSaveButtonClick(event: any) {
-    this.allergenService.updateAllergen(event).subscribe();
+    this.dataService.updateItem(ItemKey.ALLERGEN, event).subscribe();
     this.displayPopup = false;
   }
 
@@ -64,8 +66,8 @@ export class AllergenTableComponent implements OnInit {
   onDeletePopupClosed(deletion: boolean) {
     this.displayDeletePopup = false;
     if (deletion) {
-      this.allergenService
-        .deleteAllergen(this.currentDeleteId)
+      this.dataService
+        .deleteItem(ItemKey.ALLERGEN, { id: this.currentDeleteId })
         .subscribe(() => {
           this.allergens.filter(
             (allergen) => allergen.id != this.currentDeleteId

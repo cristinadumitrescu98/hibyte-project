@@ -6,7 +6,7 @@
     <ng-template pTemplate="caption">
       Alergeni
       <button pButton label="Adaugă alergen" class="p-button-rounded add-btn-mobile-version" icon="pi pi-plus"
-        (click)="newAllergen()"></button>
+        (click)="createNewAllergen()"></button>
     </ng-template>
     <ng-template pTemplate="header">
       <tr>
@@ -20,7 +20,7 @@
         <td>{{allergen.id}}</td>
         <td>{{allergen.name}}</td>
         <td>
-          <p-button icon="pi pi-pencil" styleClass="edit-btn" (click)="editAllergen(allergen)">
+          <p-button icon="pi pi-pencil" styleClass="edit-btn" (click)="editSelectedAllergen(allergen)">
           </p-button>
           <p-button (click)="showDeleteModalDialog(allergen.id)" icon="pi pi-times" styleClass="delete-btn"></p-button>
         </td>

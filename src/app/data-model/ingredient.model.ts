@@ -1,4 +1,6 @@
-export class Ingredient {
+import { DataItem } from "./dataItem.model";
+
+export class Ingredient implements DataItem {
   id?: number;
   name: string;
   energy: number;
